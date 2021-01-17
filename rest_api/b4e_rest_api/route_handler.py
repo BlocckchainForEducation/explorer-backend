@@ -27,10 +27,7 @@ from rest_api.b4e_rest_api.errors import ApiBadRequest
 from rest_api.b4e_rest_api.errors import ApiNotFound
 from rest_api.b4e_rest_api.errors import ApiUnauthorized
 
-from rest_api.b4e_rest_api.blockchain_get_data import get_data_from_transaction
-from rest_api.b4e_rest_api.blockchain_get_data import get_state
-from rest_api.b4e_rest_api.blockchain_get_data import get_student_data
-from rest_api.b4e_rest_api.blockchain_get_data import get_record_transaction
+import rest_api.b4e_rest_api.blockchain_get_data as blockchain_services
 from config.config import Sawtooth_Config
 
 LOGGER = logging.getLogger(__name__)
@@ -49,6 +46,15 @@ def tolist(source):
             list_temp.append(element)
     return list_temp
 
+import json
+from bson.objectid import ObjectId
+
+class Encoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, ObjectId):
+            return str(obj)
+        else:
+            return obj
 
 class RouteHandler(object):
     def __init__(self, loop, messenger, database):
@@ -66,59 +72,47 @@ class RouteHandler(object):
 
     async def fetch_transaction(self, request):
         transaction_id = request.match_info.get('transaction_id', '')
-        # transaction_id = request.rel_url.query['transaction_id']  # to get data from prams in get request
-        data = get_data_from_transaction(transaction_id)
-
+        LOGGER.info(transaction_id)
+        data = self._database.get_transaction(transaction_id)
+        LOGGER.info(data)
+        data = json.loads(json.dumps(data, cls=Encoder))
         return json_response(data)
 
     async def fetch_transactions(self, request):
-        transaction_id = request.match_info.get('transaction_id', '')
-        # transaction_id = request.rel_url.query['transaction_id']  # to get data from prams in get request
-        data = get_data_from_transaction(transaction_id)
-
-        return json_response(data)
-
-    async def fetch_transaction(self, request):
-        transaction_id = request.match_info.get('transaction_id', '')
-        # transaction_id = request.rel_url.query['transaction_id']  # to get data from prams in get request
-        data = get_data_from_transaction(transaction_id)
-
+        data = blockchain_services.get_transactions_from_rest()
+        data = json.loads(json.dumps(data, cls=Encoder))
         return json_response(data)
 
     async def fetch_transactions_num(self, request):
-        transaction_id = request.match_info.get('transaction_id', '')
-        # transaction_id = request.rel_url.query['transaction_id']  # to get data from prams in get request
-        data = get_data_from_transaction(transaction_id)
-
-        return json_response(data)
+        data = self._database.get_transaction_num()
+        return json_response({"transaction_num": data})
 
     async def fetch_block(self, request):
-        transaction_id = request.match_info.get('transaction_id', '')
+        block_id = request.match_info.get('block_id', '')
         # transaction_id = request.rel_url.query['transaction_id']  # to get data from prams in get request
-        data = get_data_from_transaction(transaction_id)
 
+        data = blockchain_services.get_block_from_rest(block_id)
+        data = json.loads(json.dumps(data, cls=Encoder))
         return json_response(data)
 
     async def fetch_blocks(self, request):
-        transaction_id = request.match_info.get('transaction_id', '')
-        # transaction_id = request.rel_url.query['transaction_id']  # to get data from prams in get request
-        data = get_data_from_transaction(transaction_id)
-
+        data = blockchain_services.get_blocks_from_rest()
         return json_response(data)
 
     async def fetch_blocks_num(self, request):
-        transaction_id = request.match_info.get('transaction_id', '')
-        # transaction_id = request.rel_url.query['transaction_id']  # to get data from prams in get request
-        data = get_data_from_transaction(transaction_id)
+        data = self._database.get_block_num()
 
-        return json_response(data)
+        return json_response({"block_num": data})
 
     async def fetch_family_num(self, request):
-        transaction_id = request.match_info.get('transaction_id', '')
-        # transaction_id = request.rel_url.query['transaction_id']  # to get data from prams in get request
-        data = get_data_from_transaction(transaction_id)
+        data = self._database.get_family_num()
+        return json_response({"family_num": data})
 
-        return json_response(data)
+    async def fetch_num_transaction_of_family(self, request):
+        family_name = request.rel_url.query.get('family_name', '')
+        data = self._database.get_transaction_family_num(family_name)
+
+        return json_response(({"num": data}))
 
 
 async def decode_request(request):

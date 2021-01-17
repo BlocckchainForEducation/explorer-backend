@@ -35,14 +35,9 @@ class Database(object):
     def __init__(self):
         self.mongo = None
         self.b4e_db = None
-        self.b4e_actor_collection = None
-        self.b4e_record_collection = None
-        self.b4e_voting_collection = None
-        self.b4e_vote_collection = None
-        self.b4e_environment_collection = None
-        self.b4e_class_collection = None
         self.b4e_block_collection = None
         self.b4e_transaction_collection = None
+        self.b4e_transaction_family_collection = None
 
     def connect(self, host=MongoDBConfig.HOST, port=MongoDBConfig.PORT, user_name=MongoDBConfig.USER_NAME,
                 password=MongoDBConfig.PASSWORD):
@@ -55,14 +50,9 @@ class Database(object):
 
     def create_collections(self):
         self.b4e_db = self.mongo[MongoDBConfig.DATABASE]
-        self.b4e_actor_collection = self.b4e_db[MongoDBConfig.ACTOR_COLLECTION]
-        self.b4e_record_collection = self.b4e_db[MongoDBConfig.RECORD_COLLECTION]
-        self.b4e_voting_collection = self.b4e_db[MongoDBConfig.VOTING_COLLECTION]
-        self.b4e_vote_collection = self.b4e_db[MongoDBConfig.VOTE_COLLECTION]
-        self.b4e_environment_collection = self.b4e_db[MongoDBConfig.ENVIRONMENT_COLLECTION]
-        self.b4e_class_collection = self.b4e_db[MongoDBConfig.CLASS_COLLECTION]
         self.b4e_block_collection = self.b4e_db[MongoDBConfig.BLOCK_COLLECTION]
         self.b4e_transaction_collection = self.b4e_db[MongoDBConfig.TRANSACTION_COLLECTION]
+        self.b4e_transaction_family_collection = self.b4e_db[MongoDBConfig.TRANSACTION_FAMILY_COLLECTION]
 
     def disconnect(self):
         self.mongo.close()
@@ -94,22 +84,28 @@ class Database(object):
     async def fetch_all_record_resources(self):
         pass
 
-    def num_institutions(self):
-        key = {"role": "INSTITUTION"}
-        actors = list(self.b4e_actor_collection.find(key))
-        return len(actors)
+    def get_transaction(self, transaction_id):
+        key = {'transaction_id': transaction_id}
+        transaction = self.b4e_transaction_collection.find_one(key)
+        LOGGER.info("transaction", transaction)
+        return transaction
 
-    def num_active_institutions(self):
-        key = {"role": "INSTITUTION", "status": "ACTIVE"}
-        actors = list(self.b4e_actor_collection.find(key))
-        return len(actors)
+    def get_transaction_num(self):
+        res = self.b4e_transaction_collection.find().count()
+        return res
 
-    def num_point_a_seasion(self):
-        key = {"record_type": "CERTIFICATE"}
-        records = list(self.b4e_record_collection.find(key))
-        groups = defaultdict(list)
-        for obj in records:
-            groups[obj['manager_public_key']].append(obj)
+    def get_block_num(self):
+        return self.b4e_block_collection.find().count()
+
+    def get_family_num(self):
+        return self.b4e_transaction_family_collection.find().count()
+
+    def get_transaction_family_num(self, family_name):
+        key = {'family_name': family_name}
+        res = self.b4e_transaction_family_collection.find_one(key)
+        if not res:
+            return 0
+        return res['total_transaction']
 
 
 def timestamp_to_datetime(timestamp):

@@ -16,7 +16,7 @@ version: '3.6'
 
 volumes:
   pbft-shared:
-  mongodb_data_school:
+  mongodb_data_explorer:
 
 services:
   b4e-shell-school:
@@ -69,7 +69,7 @@ services:
           -B b4e-rest-api-school:8000 \
           -C 172.25.96.1:4004 \
           -R 172.25.96.1:8008 \
-          --db-host mongo-school \
+          --db-host mongo-explorer \
           -vv
       "
   b4e-subscriber-school:
@@ -82,18 +82,18 @@ services:
       - '.:/project/sawtooth-b4e'
     depends_on:
       - b4e-shell-school
-      - mongo-school
+      - mongo-explorer
     command: |
       bash -c "
         b4e-subscriber subscribe \
-        --db-host mongo-school \
+        --db-host mongo-explorer \
         -C tcp://172.25.96.1:4004 \
         -R http://172.25.96.1:8008 \
         -vv
       "
-  mongo-school:
+  mongo-explorer:
     image: mongo
-    container_name: mongo-school
+    container_name: mongo-explorer
     restart: always
     expose:
       - 27017
@@ -101,4 +101,4 @@ services:
       - '27020:27017'
 
     volumes:
-      - mongodb_data_school:/data/db
+      - mongodb_data_explorer:/data/db

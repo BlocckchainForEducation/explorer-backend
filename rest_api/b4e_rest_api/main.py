@@ -64,15 +64,15 @@ def parse_args(args):
     parser.add_argument(
         '--db-port',
         help='The port of the database',
-        default='5432')
+        default='27017')
     parser.add_argument(
         '--db-user',
         help='The authorized user of the database',
-        default='sawtooth')
+        default='')
     parser.add_argument(
         '--db-password',
         help="The authorized user's password for database access",
-        default='sawtooth')
+        default='')
     parser.add_argument(
         '-v', '--verbose',
         action='count',
@@ -84,7 +84,11 @@ def parse_args(args):
 
 def start_rest_api(host, port, messenger, database):
     loop = asyncio.get_event_loop()
-    database.connect()
+    database.connect(
+        MongoDBConfig.HOST,
+        MongoDBConfig.PORT,
+        MongoDBConfig.USER_NAME,
+        MongoDBConfig.PASSWORD)
 
     app = web.Application(loop=loop)
     # WARNING: UNSAFE KEY STORAGE
@@ -102,10 +106,11 @@ def start_rest_api(host, port, messenger, database):
     app.router.add_get('/transactionsNum', handler.fetch_transactions_num)
 
     app.router.add_get('/blocks/{block_id}', handler.fetch_block)
-    app.router.add_get('/blocks', handler.fetch_block)
+    app.router.add_get('/blocks', handler.fetch_blocks)
     app.router.add_get('/blocksNum', handler.fetch_blocks_num)
 
-    app.router.add_get('/transactionFamilyNum', handler.fetch_family_num)
+    app.router.add_get('/familyNum', handler.fetch_family_num)
+    app.router.add_get('/transactionsFamilyNum', handler.fetch_num_transaction_of_family)
 
     LOGGER.info('Starting explorer REST API on %s:%s', host, port)
     web.run_app(
@@ -137,11 +142,14 @@ def main():
         MongoDBConfig.PASSWORD = opts.db_password
         MongoDBConfig.HOST = opts.db_host
         MongoDBConfig.PORT = opts.db_port
+        LOGGER.info("connect to db host {} port {}".format(MongoDBConfig.HOST, MongoDBConfig.PORT))
         Sawtooth_Config.VALIDATOR_TCP = opts.connect
+        Sawtooth_Config.REST_API = restapi
 
         messenger = Messenger(validator_url)
 
         database = Database()
+
         try:
             host, port = opts.bind.split(":")
             port = int(port)

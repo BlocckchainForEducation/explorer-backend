@@ -36,6 +36,48 @@ def enum_value_to_name(val):
     return None
 
 
+def get_transactions_from_rest():
+    url = Sawtooth_Config.REST_API + "/transactions"
+    response = requests.get(url)
+    if response.status_code == 200:
+        try:
+            transaction_dict = json.loads(response.content)
+            return transaction_dict
+
+        except Exception as e:
+            print("err:", e)
+            LOGGER.warning(e)
+            return None
+
+
+def get_blocks_from_rest():
+    url = Sawtooth_Config.REST_API + "/blocks"
+    response = requests.get(url)
+    if response.status_code == 200:
+        try:
+            blocks = json.loads(response.content)
+            return blocks
+
+        except Exception as e:
+            print("err:", e)
+            LOGGER.warning(e)
+            return None
+
+
+def get_block_from_rest(block_id):
+    url = Sawtooth_Config.REST_API + "/blocks/" + str(block_id)
+    response = requests.get(url)
+    if response.status_code == 200:
+        try:
+            blocks = json.loads(response.content)
+            return blocks
+
+        except Exception as e:
+            print("err:", e)
+            LOGGER.warning(e)
+            return None
+
+
 def get_data_from_transaction(transaction_id):
     url = Sawtooth_Config.REST_API + "/transactions/" + str(transaction_id)
     response = requests.get(url)
