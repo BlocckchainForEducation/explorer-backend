@@ -1,0 +1,104 @@
+# Copyright 2019 Cargill Incorporated
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+version: '3.6'
+
+volumes:
+  pbft-shared:
+  mongodb_data_school:
+
+services:
+  b4e-shell-school:
+    build:
+      context: .
+      dockerfile: ../shell/Dockerfile
+    image: sawtooth-b4e-shell
+    container_name: b4e-shell-school
+    volumes:
+      - .:/project/sawtooth-b4e
+
+    command: |
+      bash -c "
+        b4e-protogen
+        tail -f /dev/null
+      "
+
+  # -------------=== shell ===-------------
+
+  shell-school:
+    image: hyperledger/sawtooth-shell:chime
+    container_name: sawtooth-shell-default-school
+    volumes:
+      - pbft-shared:/pbft-shared
+    command: |
+      bash -c "
+        sawtooth keygen
+        tail -f /dev/null
+      "
+    stop_signal: SIGKILL
+
+
+  b4e-rest-api-school:
+    build:
+      context: .
+      dockerfile: ./rest_api/Dockerfile
+    image: sawtooth-b4e-rest-api
+    container_name: b4e-rest-api-school
+    volumes:
+      - .:/project/sawtooth-b4e
+    expose:
+      - 8000
+    ports:
+      - '2398:8000'
+    depends_on:
+      - b4e-shell-school
+    command: |
+      bash -c "
+        b4e-rest-api \
+          -B b4e-rest-api-school:8000 \
+          -C 172.25.96.1:4004 \
+          -R 172.25.96.1:8008 \
+          --db-host mongo-school \
+          -vv
+      "
+  b4e-subscriber-school:
+    build:
+      context: .
+      dockerfile: subscriber_b4e/Dockerfile
+    image: sawtooth-b4e-subscriber
+    container_name: b4e-subscriber_b4e-school
+    volumes:
+      - '.:/project/sawtooth-b4e'
+    depends_on:
+      - b4e-shell-school
+      - mongo-school
+    command: |
+      bash -c "
+        b4e-subscriber subscribe \
+        --db-host mongo-school \
+        -C tcp://172.25.96.1:4004 \
+        -R http://172.25.96.1:8008 \
+        -vv
+      "
+  mongo-school:
+    image: mongo
+    container_name: mongo-school
+    restart: always
+    expose:
+      - 27017
+    ports:
+      - '27020:27017'
+
+    volumes:
+      - mongodb_data_school:/data/db

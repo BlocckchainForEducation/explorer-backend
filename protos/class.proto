@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+message Class {
+  string class_id = 1;
+  string teacher_public_key = 2;
+  string edu_officer_public_key = 3;
+  string institution_public_key = 4;
+  uint64 timestamp = 5;
+  string transaction_id = 6;
+}
+
+message ClassContainer {
+  repeated Class entries = 1;
+}

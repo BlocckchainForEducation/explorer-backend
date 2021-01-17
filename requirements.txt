@@ -1,0 +1,8 @@
+sawtooth_sdk
+requests
+aiohttp
+elasticsearch
+pymongo
+eciespy
+matplotlib
+numpy

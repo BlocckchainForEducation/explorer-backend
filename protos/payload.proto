@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+
+message B4EPayload{
+
+  enum Action {
+    CREATE_INSTITUTION = 0;
+    CREATE_TEACHER = 1;
+    CREATE_EDU_OFFICER = 2;
+    CREATE_VOTE = 3;
+    CREATE_CLASS = 4;
+    CREATE_RECORD = 6;
+    CREATE_CERT = 7;
+    CREATE_SUBJECT = 8;
+    UPDATE_RECORD = 9;
+    UPDATE_ACTOR_INFO = 10;
+    SET_B4E_ENVIRONMENT = 11;
+  }
+
+  Action action = 1;
+
+  CreateInstitutionAction create_institution = 2;
+  CreateTeacherAction create_teacher = 3;
+  CreateEduOfficerAction create_edu_officer = 4;
+  CreateVoteAction create_vote = 5;
+  CreateClassAction create_class = 6;
+  CreateRecordAction create_record = 7;
+  CreateCertAction create_cert = 8;
+  CreateSubjectAction create_subject = 9;
+  UpdateRecordAction update_record = 10;
+  UpdateActorInfoAction update_actor_info = 11;
+  SetB4EEnvironmentAction set_b4e_environment = 12;
+
+  uint64 timestamp = 13;
+}
+
+
+message Info{
+  string data = 1;
+}
+
+enum RecordType{
+  SUBJECT = 0;
+  CERTIFICATE = 1;
+}
+
+
+message CreateInstitutionAction {
+  string id = 1;
+  Info info = 3;
+}
+
+message CreateTeacherAction {
+  string id = 1;
+  string teacher_public_key = 2;
+  Info info = 4;
+}
+message CreateEduOfficerAction {
+  string id = 1;
+  string edu_officer_public_key = 2;
+  Info info = 4;
+}
+
+message CreateVoteAction {
+  string issuer_public_key = 1;
+  string elector_public_key = 2;
+  bool accepted = 3;
+}
+message CreateClassAction{
+  string class_id = 1;
+  string teacher_public_key = 2;
+  string edu_officer_public_key = 3;
+  uint64 timestamp = 4;
+}
+message CreateRecordAction {
+  string owner_public_key = 1;
+  string manager_public_key = 2;
+  string issuer_public_key = 3;
+  string record_id = 4;
+  RecordType record_type = 5;
+  string record_data = 6;
+  string record_hash = 7;
+}
+message CreateCertAction {
+  string owner_public_key = 1;
+  string manager_public_key = 2;
+  string issuer_public_key = 3;
+  string record_id = 4;
+  string record_data = 6;
+  string record_hash = 7;
+}
+message CreateSubjectAction {
+  string owner_public_key = 1;
+  string manager_public_key = 2;
+  string issuer_public_key = 3;
+  string record_id = 4;
+  string record_data = 6;
+  string record_hash = 7;
+}
+message UpdateRecordAction {
+  string owner_public_key = 1;
+  string manager_public_key = 2;
+  string record_id = 3;
+  string record_data = 4;
+  string record_hash = 5;
+  bool active = 6;
+}
+
+message UpdateActorInfoAction {
+  Info info = 3;
+}
+
+message SetB4EEnvironmentAction{
+  uint64 timestamp = 1;
+}
+
+

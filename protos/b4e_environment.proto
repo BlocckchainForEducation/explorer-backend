@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+message B4EEnvironment {
+  uint64 institution_number = 1;
+  string transaction_id = 2;
+}
+
+message B4EEnvironmentContainer {
+  repeated B4EEnvironment entries = 1;
+}

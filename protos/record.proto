@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+
+message Record {
+
+  enum RecordType {
+    CERTIFICATE = 0;
+    SUBJECT = 1;
+  }
+  message RecordData {
+  string record_data = 1;
+  string record_hash =2;
+  bool active = 3;
+  uint64 timestamp = 4;
+  string transaction_id = 5;
+
+}
+
+  string owner_public_key = 1;
+  string manager_public_key = 2;
+  string issuer_public_key = 3;
+  string record_id = 4;
+  RecordType record_type = 5;
+  repeated RecordData record_data = 6;
+  uint64 timestamp = 7;
+  string transaction_id = 8;
+}
+
+
+message RecordContainer {
+  repeated Record entries = 1;
+}
