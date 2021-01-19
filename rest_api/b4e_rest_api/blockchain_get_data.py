@@ -36,8 +36,12 @@ def enum_value_to_name(val):
     return None
 
 
-def get_transactions_from_rest():
-    url = Sawtooth_Config.REST_API + "/transactions"
+def get_transactions_from_rest(limit):
+    if (limit):
+        limit_url = "?limit=" + str(limit)
+    else:
+        limit_url = ""
+    url = Sawtooth_Config.REST_API + "/transactions" + limit_url
     response = requests.get(url)
     if response.status_code == 200:
         try:
@@ -50,8 +54,12 @@ def get_transactions_from_rest():
             return None
 
 
-def get_blocks_from_rest():
-    url = Sawtooth_Config.REST_API + "/blocks"
+def get_blocks_from_rest(limit):
+    if (limit):
+        limit_url = "?limit=" + str(limit)
+    else:
+        limit_url = ""
+    url = Sawtooth_Config.REST_API + "/blocks" + limit_url
     response = requests.get(url)
     if response.status_code == 200:
         try:
@@ -71,6 +79,20 @@ def get_block_from_rest(block_id):
         try:
             blocks = json.loads(response.content)
             return blocks
+
+        except Exception as e:
+            print("err:", e)
+            LOGGER.warning(e)
+            return None
+
+
+def get_peers():
+    url = Sawtooth_Config.REST_API + "/peers"
+    response = requests.get(url)
+    if response.status_code == 200:
+        try:
+            peers = json.loads(response.content)
+            return peers
 
         except Exception as e:
             print("err:", e)
@@ -164,7 +186,7 @@ def get_data_payload(payload_string):
 
     except Exception as e:
         print("err:", e)
-        return {'msg': "err"}
+        return payload_string
 
 
 def get_state(sawtooth_address):
@@ -232,44 +254,3 @@ def _convert_proto_to_dict(proto):
             result[key] = value
 
     return result
-
-
-def get_student_data(student_public_key):
-    url = Sawtooth_Config.REST_API + "/state"
-    response = requests.get(url)
-    if response.status_code == 200:
-        try:
-            state_dict = json.loads(response.content)
-            # print(state_dict['data'])
-            cert = {}
-            subjects = []
-            for state in state_dict['data']:
-                if addresser.is_owner(state['address'], student_public_key):
-                    deserialize = deserialize_data(state['address'], base64.b64decode(state['data']))[0]
-
-                    # get latest record data in record
-                    # latest_record_data = max(deserialize['record_data'], key=lambda obj: obj['timestamp'])
-                    record = {'address': state['address'], 'versions': []}
-
-                    for record_data in deserialize['record_data']:
-                        record['versions'].append({
-                            'txid': record_data['transaction_id'],
-                            'timestamp': record_data['timestamp'],
-                            'active': record_data['active'],
-                            'cipher': record_data['record_data']
-
-                        })
-                    if deserialize['record_type'] == 'CERTIFICATE':
-                        cert = record
-                    elif deserialize['record_type'] == 'SUBJECT':
-                        subjects.append(record)
-
-            data = {'publicKeyHex': student_public_key,
-                    'certificate': cert,
-                    'subjects': subjects}
-            return data
-
-        except Exception as e:
-            print("err:", e)
-            LOGGER.warning(e)
-            return {'msg': "err"}

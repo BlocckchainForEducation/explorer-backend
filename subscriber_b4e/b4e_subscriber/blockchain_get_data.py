@@ -53,66 +53,6 @@ def get_data_from_transaction(transaction_id):
             return None
 
 
-def get_record_transaction(transaction_id):
-    url = Sawtooth_Config.REST_API + "/transactions/" + str(transaction_id)
-
-    response = requests.get(url)
-    if response.status_code == 200:
-        try:
-            transaction_dict = json.loads(response.content)
-            payload_string = transaction_dict['data']['payload']
-            data_model = payload_pb2.B4EPayload()
-            data_model.ParseFromString(base64.b64decode(payload_string))
-            data = dict(MessageToDict(data_model))
-
-            if data.get('createRecord'):
-                res = {
-                    'ok': True,
-                    'cipher': data['createRecord']['recordData'],
-                    'timestamp': data['timestamp']
-                }
-            elif data.get('updateRecord'):
-                res = {
-                    'ok': True,
-                    'cipher': data['updateRecord']['recordData'],
-                    'timestamp': data['timestamp']
-                }
-            else:
-                res = {
-                    'ok': False,
-                    'msg': 'Transaction record not found'
-                }
-            return res
-
-        except Exception as e:
-            print("err:", e)
-            LOGGER.warning(e)
-            return {'ok': False}
-    return {'ok': False, 'msg': 'Transaction  not found'}
-
-
-def get_payload_from_block(block_id, address):
-    url = Sawtooth_Config.REST_API + "/blocks/" + str(block_id)
-    response = requests.get(url)
-    if response.status_code == 200:
-        try:
-            block = json.loads(response.content)
-            batches = block['data']['batches']
-            for batch in batches:
-
-                for transaction in batch['transactions']:
-                    tran = json.loads(json.dumps(transaction))
-                    print(tran['header']['outputs'])
-                    if address in transaction['header']['outputs']:
-                        return transaction['payload']
-
-            return None
-
-        except Exception as e:
-            print("err:", e)
-            return {'msg': "err"}
-
-
 def get_transaction_from_block(block_id):
     if (not block_id):
         return None
@@ -128,10 +68,7 @@ def get_transaction_from_block(block_id):
                 for transaction in transactions_in_batch:
                     LOGGER.warning("tr")
                     transaction['transaction_id'] = transaction['header_signature']
-                    try:
-                        transaction['decode_payload'] = get_data_payload(transaction['payload'])
-                    except Exception as e:
-                        transaction['decode_payload'] = transaction['payload']
+                    transaction['decode_payload'] = get_data_payload(transaction['payload'])
                     transactions.append(transaction)
             return transactions
 
@@ -149,7 +86,7 @@ def get_data_payload(payload_string):
 
     except Exception as e:
         print("err:", e)
-        return {'msg': "err"}
+        return payload_string
 
 
 def get_state(sawtooth_address):
@@ -217,44 +154,3 @@ def _convert_proto_to_dict(proto):
             result[key] = value
 
     return result
-
-
-def get_student_data(student_public_key):
-    url = Sawtooth_Config.REST_API + "/state"
-    response = requests.get(url)
-    if response.status_code == 200:
-        try:
-            state_dict = json.loads(response.content)
-            # print(state_dict['data'])
-            cert = {}
-            subjects = []
-            for state in state_dict['data']:
-                if addresser.is_owner(state['address'], student_public_key):
-                    deserialize = deserialize_data(state['address'], base64.b64decode(state['data']))[0]
-
-                    # get latest record data in record
-                    # latest_record_data = max(deserialize['record_data'], key=lambda obj: obj['timestamp'])
-                    record = {'address': state['address'], 'versions': []}
-
-                    for record_data in deserialize['record_data']:
-                        record['versions'].append({
-                            'txid': record_data['transaction_id'],
-                            'timestamp': record_data['timestamp'],
-                            'active': record_data['active'],
-                            'cipher': record_data['record_data']
-
-                        })
-                    if deserialize['record_type'] == 'CERTIFICATE':
-                        cert = record
-                    elif deserialize['record_type'] == 'SUBJECT':
-                        subjects.append(record)
-
-            data = {'publicKeyHex': student_public_key,
-                    'certificate': cert,
-                    'subjects': subjects}
-            return data
-
-        except Exception as e:
-            print("err:", e)
-            LOGGER.warning(e)
-            return {'msg': "err"}

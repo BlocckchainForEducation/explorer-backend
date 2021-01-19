@@ -67,8 +67,8 @@ services:
       bash -c "
         b4e-rest-api \
           -B b4e-rest-api-school:8000 \
-          -C 172.25.96.1:4004 \
-          -R 172.25.96.1:8008 \
+          -C 192.168.1.6:4004 \
+          -R 192.168.1.6:8008 \
           --db-host mongo-explorer \
           -vv
       "
@@ -87,8 +87,8 @@ services:
       bash -c "
         b4e-subscriber subscribe \
         --db-host mongo-explorer \
-        -C tcp://172.25.96.1:4004 \
-        -R http://172.25.96.1:8008 \
+        -C tcp://192.168.1.6:4004 \
+        -R http://192.168.1.6:8008 \
         -vv
       "
   mongo-explorer:

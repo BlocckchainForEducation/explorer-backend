@@ -110,7 +110,8 @@ def start_rest_api(host, port, messenger, database):
     app.router.add_get('/blocksNum', handler.fetch_blocks_num)
 
     app.router.add_get('/familyNum', handler.fetch_family_num)
-    app.router.add_get('/transactionsFamilyNum', handler.fetch_num_transaction_of_family)
+    app.router.add_get('/families', handler.fetch_num_transaction_of_family)
+    app.router.add_get('/peers', handler.fetch_peers)
 
     LOGGER.info('Starting explorer REST API on %s:%s', host, port)
     web.run_app(

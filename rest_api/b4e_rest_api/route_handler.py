@@ -46,8 +46,10 @@ def tolist(source):
             list_temp.append(element)
     return list_temp
 
+
 import json
 from bson.objectid import ObjectId
+
 
 class Encoder(json.JSONEncoder):
     def default(self, obj):
@@ -55,6 +57,7 @@ class Encoder(json.JSONEncoder):
             return str(obj)
         else:
             return obj
+
 
 class RouteHandler(object):
     def __init__(self, loop, messenger, database):
@@ -72,14 +75,13 @@ class RouteHandler(object):
 
     async def fetch_transaction(self, request):
         transaction_id = request.match_info.get('transaction_id', '')
-        LOGGER.info(transaction_id)
         data = self._database.get_transaction(transaction_id)
-        LOGGER.info(data)
         data = json.loads(json.dumps(data, cls=Encoder))
-        return json_response(data)
+        return json_response({"data": data})
 
     async def fetch_transactions(self, request):
-        data = blockchain_services.get_transactions_from_rest()
+        limit = request.rel_url.query.get('limit', '')
+        data = blockchain_services.get_transactions_from_rest(limit)
         data = json.loads(json.dumps(data, cls=Encoder))
         return json_response(data)
 
@@ -96,7 +98,8 @@ class RouteHandler(object):
         return json_response(data)
 
     async def fetch_blocks(self, request):
-        data = blockchain_services.get_blocks_from_rest()
+        limit = request.rel_url.query.get('limit', '')
+        data = blockchain_services.get_blocks_from_rest(limit)
         return json_response(data)
 
     async def fetch_blocks_num(self, request):
@@ -110,9 +113,18 @@ class RouteHandler(object):
 
     async def fetch_num_transaction_of_family(self, request):
         family_name = request.rel_url.query.get('family_name', '')
-        data = self._database.get_transaction_family_num(family_name)
+        if (not family_name):
+            data = self._database.get_families()
+            # data = json.loads(json.dumps(data, cls=Encoder))
+            # LOGGER.info("data : ", data)
+            return json_response({"families": data})
+        else:
+            data = self._database.get_transaction_family_num(family_name)
+            return json_response(({"num": data}))
 
-        return json_response(({"num": data}))
+    async def fetch_peers(self, request):
+        data = blockchain_services.get_peers()
+        return json_response(data)
 
 
 async def decode_request(request):

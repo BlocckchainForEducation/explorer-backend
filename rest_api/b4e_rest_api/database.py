@@ -107,6 +107,22 @@ class Database(object):
             return 0
         return res['total_transaction']
 
+    def get_families(self):
+        families = []
+        res = self.b4e_transaction_family_collection.find()
+        for family in res:
+            del family['_id']
+            families.append(family)
+        return families
+
+    def get_all_trans(self):
+        transactions = []
+        res = self.b4e_transaction_collection.find()
+        for transaction in res:
+            del transaction['_id']
+            transactions.append(transaction)
+        return transactions
+
 
 def timestamp_to_datetime(timestamp):
     return datetime.datetime.fromtimestamp(timestamp)
