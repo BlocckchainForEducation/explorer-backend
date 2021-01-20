@@ -76,7 +76,7 @@ services:
     build:
       context: .
       dockerfile: subscriber_b4e/Dockerfile
-    image: sawtooth-b4e-subscriber
+    image: sawtooth-b4e-subscriber-explorer
     container_name: b4e-subscriber-explorer
     volumes:
       - '.:/project/sawtooth-b4e'
