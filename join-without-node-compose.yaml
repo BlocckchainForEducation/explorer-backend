@@ -19,12 +19,12 @@ volumes:
   mongodb_data_explorer:
 
 services:
-  b4e-shell-school:
+  b4e-shell-explorer:
     build:
       context: .
       dockerfile: ../shell/Dockerfile
     image: sawtooth-b4e-shell
-    container_name: b4e-shell-school
+    container_name: b4e-shell-explorer
     volumes:
       - .:/project/sawtooth-b4e
 
@@ -36,9 +36,9 @@ services:
 
   # -------------=== shell ===-------------
 
-  shell-school:
+  shell-explorer:
     image: hyperledger/sawtooth-shell:chime
-    container_name: sawtooth-shell-default-school
+    container_name: sawtooth-shell-default-explorer
     volumes:
       - pbft-shared:/pbft-shared
     command: |
@@ -49,12 +49,12 @@ services:
     stop_signal: SIGKILL
 
 
-  b4e-rest-api-school:
+  b4e-rest-api-explorer:
     build:
       context: .
       dockerfile: ./rest_api/Dockerfile
     image: sawtooth-b4e-rest-api
-    container_name: b4e-rest-api-school
+    container_name: b4e-rest-api-explorer
     volumes:
       - .:/project/sawtooth-b4e
     expose:
@@ -62,26 +62,26 @@ services:
     ports:
       - '2398:8000'
     depends_on:
-      - b4e-shell-school
+      - b4e-shell-explorer
     command: |
       bash -c "
         b4e-rest-api \
-          -B b4e-rest-api-school:8000 \
+          -B b4e-rest-api-explorer:8000 \
           -C 139.59.125.235:4004 \
           -R 139.59.125.235:8008 \
           --db-host mongo-explorer \
           -vv
       "
-  b4e-subscriber-school:
+  b4e-subscriber-explorer:
     build:
       context: .
       dockerfile: subscriber_b4e/Dockerfile
     image: sawtooth-b4e-subscriber
-    container_name: b4e-subscriber_b4e-school
+    container_name: b4e-subscriber_b4e-explorer
     volumes:
       - '.:/project/sawtooth-b4e'
     depends_on:
-      - b4e-shell-school
+      - b4e-shell-explorer
       - mongo-explorer
     command: |
       bash -c "
