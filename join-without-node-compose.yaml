@@ -70,13 +70,15 @@ services:
           -C 139.59.125.235:4004 \
           -R 139.59.125.235:8008 \
           --db-host mongo-explorer \
+          --db-user b4e \
+          --db-password b4e_bkc \
           -vv
       "
   b4e-subscriber-explorer:
     build:
       context: .
       dockerfile: subscriber_b4e/Dockerfile
-    image: sawtooth-b4e-subscriber
+    image: sawtooth-b4e-subscriber-explorer
     container_name: b4e-subscriber-explorer
     volumes:
       - '.:/project/sawtooth-b4e'
@@ -87,6 +89,8 @@ services:
       bash -c "
         b4e-subscriber subscribe \
         --db-host mongo-explorer \
+        --db-user b4e \
+        --db-password b4e_bkc \
         -C tcp://139.59.125.235:4004 \
         -R http://139.59.125.235:8008 \
         -vv
@@ -99,3 +103,6 @@ services:
       - 27017
     ports:
       - '27020:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: b4e
+      MONGO_INITDB_ROOT_PASSWORD: b4e_bkc
