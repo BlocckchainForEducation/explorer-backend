@@ -4,7 +4,7 @@ message Voting {
 
   enum VoteType{
     ACTIVE = 0;
-    NOT_ACTIVE = 1;
+    REJECT = 1;
   }
   enum VoteResult{
     WIN = 0;
@@ -13,17 +13,17 @@ message Voting {
   }
   message Vote {
     string issuer_public_key = 1;
-    bool accepted = 2;
+    bool accept = 2;
     uint64 timestamp = 3;
     string transaction_id = 4;
   }
 
-  string elector_public_key = 1;
-  string data = 2;
-  VoteResult vote_result = 3;
-  uint64 close_vote_timestamp = 4;
-  VoteType voteType = 5;
-  repeated  Vote vote = 6;
+  string publisher_public_key = 1;
+  string elector_public_key = 2;
+  VoteType vote_type = 3;
+  repeated  Vote vote = 4;
+  VoteResult vote_result = 5;
+  uint64 close_vote_timestamp = 6;
   uint64 timestamp = 7;
   string transaction_id = 8;
 }

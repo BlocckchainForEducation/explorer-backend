@@ -1,1 +1,0 @@
-protoc --proto_path=./protos --python_out=./protobuf/b4e_protobuf/ ./protos/actor.proto ./protos/b4e_environment.proto ./protos/class.proto  ./protos/record.proto  ./protos/voting.proto ./protos/payload.proto

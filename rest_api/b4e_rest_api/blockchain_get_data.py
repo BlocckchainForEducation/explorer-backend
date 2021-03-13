@@ -16,6 +16,7 @@ from protobuf.b4e_protobuf.class_pb2 import ClassContainer
 from protobuf.b4e_protobuf.record_pb2 import RecordContainer
 from google.protobuf.json_format import MessageToJson
 from google.protobuf.json_format import MessageToDict
+import google
 
 CONTAINERS = {
     AddressSpace.ACTOR: ActorContainer,
@@ -251,6 +252,8 @@ def _convert_proto_to_dict(proto):
             result[key] = name
 
         else:
+            if type(value) == google.protobuf.pyext._message.RepeatedScalarContainer:
+                value = list(value)
             result[key] = value
 
     return result

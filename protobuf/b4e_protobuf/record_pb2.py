@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0crecord.proto\"\x88\x03\n\x06Record\x12\x18\n\x10owner_public_key\x18\x01 \x01(\t\x12\x1a\n\x12manager_public_key\x18\x02 \x01(\t\x12\x19\n\x11issuer_public_key\x18\x03 \x01(\t\x12\x11\n\trecord_id\x18\x04 \x01(\t\x12\'\n\x0brecord_type\x18\x05 \x01(\x0e\x32\x12.Record.RecordType\x12\'\n\x0brecord_data\x18\x06 \x03(\x0b\x32\x12.Record.RecordData\x12\x11\n\ttimestamp\x18\x07 \x01(\x04\x12\x16\n\x0etransaction_id\x18\x08 \x01(\t\x1aq\n\nRecordData\x12\x13\n\x0brecord_data\x18\x01 \x01(\t\x12\x13\n\x0brecord_hash\x18\x02 \x01(\t\x12\x0e\n\x06\x61\x63tive\x18\x03 \x01(\x08\x12\x11\n\ttimestamp\x18\x04 \x01(\x04\x12\x16\n\x0etransaction_id\x18\x05 \x01(\t\"*\n\nRecordType\x12\x0f\n\x0b\x43\x45RTIFICATE\x10\x00\x12\x0b\n\x07SUBJECT\x10\x01\"+\n\x0fRecordContainer\x12\x18\n\x07\x65ntries\x18\x01 \x03(\x0b\x32\x07.Recordb\x06proto3')
+  serialized_pb=_b('\n\x0crecord.proto\"\xc8\x03\n\x06Record\x12\x18\n\x10owner_public_key\x18\x01 \x01(\t\x12\x19\n\x11issuer_public_key\x18\x02 \x01(\t\x12\x1a\n\x12manager_public_key\x18\x03 \x01(\t\x12\x11\n\trecord_id\x18\x04 \x01(\t\x12\'\n\x0brecord_type\x18\x05 \x01(\x0e\x32\x12.Record.RecordType\x12$\n\x08versions\x18\x06 \x03(\x0b\x32\x12.Record.RecordData\x1a\x98\x01\n\nRecordData\x12\x14\n\x0cportfolio_id\x18\x01 \x01(\t\x12\x0e\n\x06\x63ipher\x18\x02 \x01(\t\x12\x0c\n\x04hash\x18\x03 \x01(\t\x12+\n\rrecord_status\x18\x04 \x01(\x0e\x32\x14.Record.RecordStatus\x12\x11\n\ttimestamp\x18\x05 \x01(\x04\x12\x16\n\x0etransaction_id\x18\x06 \x01(\t\"5\n\nRecordType\x12\x0f\n\x0b\x43\x45RTIFICATE\x10\x00\x12\x0b\n\x07SUBJECT\x10\x01\x12\t\n\x05OTHER\x10\x02\"9\n\x0cRecordStatus\x12\x0b\n\x07\x43REATED\x10\x00\x12\x0b\n\x07REVOKED\x10\x01\x12\x0f\n\x0bREACTIVATED\x10\x02\"+\n\x0fRecordContainer\x12\x18\n\x07\x65ntries\x18\x01 \x03(\x0b\x32\x07.Recordb\x06proto3')
 )
 
 
@@ -38,13 +38,43 @@ _RECORD_RECORDTYPE = _descriptor.EnumDescriptor(
       name='SUBJECT', index=1, number=1,
       serialized_options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='OTHER', index=2, number=2,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=367,
-  serialized_end=409,
+  serialized_start=361,
+  serialized_end=414,
 )
 _sym_db.RegisterEnumDescriptor(_RECORD_RECORDTYPE)
+
+_RECORD_RECORDSTATUS = _descriptor.EnumDescriptor(
+  name='RecordStatus',
+  full_name='Record.RecordStatus',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='CREATED', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='REVOKED', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='REACTIVATED', index=2, number=2,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=416,
+  serialized_end=473,
+)
+_sym_db.RegisterEnumDescriptor(_RECORD_RECORDSTATUS)
 
 
 _RECORD_RECORDDATA = _descriptor.Descriptor(
@@ -55,36 +85,43 @@ _RECORD_RECORDDATA = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='record_data', full_name='Record.RecordData.record_data', index=0,
+      name='portfolio_id', full_name='Record.RecordData.portfolio_id', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='record_hash', full_name='Record.RecordData.record_hash', index=1,
+      name='cipher', full_name='Record.RecordData.cipher', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='active', full_name='Record.RecordData.active', index=2,
-      number=3, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      name='hash', full_name='Record.RecordData.hash', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='timestamp', full_name='Record.RecordData.timestamp', index=3,
-      number=4, type=4, cpp_type=4, label=1,
+      name='record_status', full_name='Record.RecordData.record_status', index=3,
+      number=4, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='transaction_id', full_name='Record.RecordData.transaction_id', index=4,
-      number=5, type=9, cpp_type=9, label=1,
+      name='timestamp', full_name='Record.RecordData.timestamp', index=4,
+      number=5, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='transaction_id', full_name='Record.RecordData.transaction_id', index=5,
+      number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -101,8 +138,8 @@ _RECORD_RECORDDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=252,
-  serialized_end=365,
+  serialized_start=207,
+  serialized_end=359,
 )
 
 _RECORD = _descriptor.Descriptor(
@@ -120,14 +157,14 @@ _RECORD = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='manager_public_key', full_name='Record.manager_public_key', index=1,
+      name='issuer_public_key', full_name='Record.issuer_public_key', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='issuer_public_key', full_name='Record.issuer_public_key', index=2,
+      name='manager_public_key', full_name='Record.manager_public_key', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -148,23 +185,9 @@ _RECORD = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='record_data', full_name='Record.record_data', index=5,
+      name='versions', full_name='Record.versions', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='timestamp', full_name='Record.timestamp', index=6,
-      number=7, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='transaction_id', full_name='Record.transaction_id', index=7,
-      number=8, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -174,6 +197,7 @@ _RECORD = _descriptor.Descriptor(
   nested_types=[_RECORD_RECORDDATA, ],
   enum_types=[
     _RECORD_RECORDTYPE,
+    _RECORD_RECORDSTATUS,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -182,7 +206,7 @@ _RECORD = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=17,
-  serialized_end=409,
+  serialized_end=473,
 )
 
 
@@ -212,14 +236,16 @@ _RECORDCONTAINER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=411,
-  serialized_end=454,
+  serialized_start=475,
+  serialized_end=518,
 )
 
+_RECORD_RECORDDATA.fields_by_name['record_status'].enum_type = _RECORD_RECORDSTATUS
 _RECORD_RECORDDATA.containing_type = _RECORD
 _RECORD.fields_by_name['record_type'].enum_type = _RECORD_RECORDTYPE
-_RECORD.fields_by_name['record_data'].message_type = _RECORD_RECORDDATA
+_RECORD.fields_by_name['versions'].message_type = _RECORD_RECORDDATA
 _RECORD_RECORDTYPE.containing_type = _RECORD
+_RECORD_RECORDSTATUS.containing_type = _RECORD
 _RECORDCONTAINER.fields_by_name['entries'].message_type = _RECORD
 DESCRIPTOR.message_types_by_name['Record'] = _RECORD
 DESCRIPTOR.message_types_by_name['RecordContainer'] = _RECORDCONTAINER

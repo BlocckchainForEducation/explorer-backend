@@ -20,9 +20,51 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\rpayload.proto\"\xb3\x06\n\nB4EPayload\x12\"\n\x06\x61\x63tion\x18\x01 \x01(\x0e\x32\x12.B4EPayload.Action\x12\x34\n\x12\x63reate_institution\x18\x02 \x01(\x0b\x32\x18.CreateInstitutionAction\x12,\n\x0e\x63reate_teacher\x18\x03 \x01(\x0b\x32\x14.CreateTeacherAction\x12\x33\n\x12\x63reate_edu_officer\x18\x04 \x01(\x0b\x32\x17.CreateEduOfficerAction\x12&\n\x0b\x63reate_vote\x18\x05 \x01(\x0b\x32\x11.CreateVoteAction\x12(\n\x0c\x63reate_class\x18\x06 \x01(\x0b\x32\x12.CreateClassAction\x12*\n\rcreate_record\x18\x07 \x01(\x0b\x32\x13.CreateRecordAction\x12&\n\x0b\x63reate_cert\x18\x08 \x01(\x0b\x32\x11.CreateCertAction\x12,\n\x0e\x63reate_subject\x18\t \x01(\x0b\x32\x14.CreateSubjectAction\x12*\n\rupdate_record\x18\n \x01(\x0b\x32\x13.UpdateRecordAction\x12\x31\n\x11update_actor_info\x18\x0b \x01(\x0b\x32\x16.UpdateActorInfoAction\x12\x35\n\x13set_b4e_environment\x18\x0c \x01(\x0b\x32\x18.SetB4EEnvironmentAction\x12\x11\n\ttimestamp\x18\r \x01(\x04\"\xea\x01\n\x06\x41\x63tion\x12\x16\n\x12\x43REATE_INSTITUTION\x10\x00\x12\x12\n\x0e\x43REATE_TEACHER\x10\x01\x12\x16\n\x12\x43REATE_EDU_OFFICER\x10\x02\x12\x0f\n\x0b\x43REATE_VOTE\x10\x03\x12\x10\n\x0c\x43REATE_CLASS\x10\x04\x12\x11\n\rCREATE_RECORD\x10\x06\x12\x0f\n\x0b\x43REATE_CERT\x10\x07\x12\x12\n\x0e\x43REATE_SUBJECT\x10\x08\x12\x11\n\rUPDATE_RECORD\x10\t\x12\x15\n\x11UPDATE_ACTOR_INFO\x10\n\x12\x17\n\x13SET_B4E_ENVIRONMENT\x10\x0b\"\x14\n\x04Info\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\":\n\x17\x43reateInstitutionAction\x12\n\n\x02id\x18\x01 \x01(\t\x12\x13\n\x04info\x18\x03 \x01(\x0b\x32\x05.Info\"R\n\x13\x43reateTeacherAction\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1a\n\x12teacher_public_key\x18\x02 \x01(\t\x12\x13\n\x04info\x18\x04 \x01(\x0b\x32\x05.Info\"Y\n\x16\x43reateEduOfficerAction\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1e\n\x16\x65\x64u_officer_public_key\x18\x02 \x01(\t\x12\x13\n\x04info\x18\x04 \x01(\x0b\x32\x05.Info\"[\n\x10\x43reateVoteAction\x12\x19\n\x11issuer_public_key\x18\x01 \x01(\t\x12\x1a\n\x12\x65lector_public_key\x18\x02 \x01(\t\x12\x10\n\x08\x61\x63\x63\x65pted\x18\x03 \x01(\x08\"t\n\x11\x43reateClassAction\x12\x10\n\x08\x63lass_id\x18\x01 \x01(\t\x12\x1a\n\x12teacher_public_key\x18\x02 \x01(\t\x12\x1e\n\x16\x65\x64u_officer_public_key\x18\x03 \x01(\t\x12\x11\n\ttimestamp\x18\x04 \x01(\x04\"\xc4\x01\n\x12\x43reateRecordAction\x12\x18\n\x10owner_public_key\x18\x01 \x01(\t\x12\x1a\n\x12manager_public_key\x18\x02 \x01(\t\x12\x19\n\x11issuer_public_key\x18\x03 \x01(\t\x12\x11\n\trecord_id\x18\x04 \x01(\t\x12 \n\x0brecord_type\x18\x05 \x01(\x0e\x32\x0b.RecordType\x12\x13\n\x0brecord_data\x18\x06 \x01(\t\x12\x13\n\x0brecord_hash\x18\x07 \x01(\t\"\xa0\x01\n\x10\x43reateCertAction\x12\x18\n\x10owner_public_key\x18\x01 \x01(\t\x12\x1a\n\x12manager_public_key\x18\x02 \x01(\t\x12\x19\n\x11issuer_public_key\x18\x03 \x01(\t\x12\x11\n\trecord_id\x18\x04 \x01(\t\x12\x13\n\x0brecord_data\x18\x06 \x01(\t\x12\x13\n\x0brecord_hash\x18\x07 \x01(\t\"\xa3\x01\n\x13\x43reateSubjectAction\x12\x18\n\x10owner_public_key\x18\x01 \x01(\t\x12\x1a\n\x12manager_public_key\x18\x02 \x01(\t\x12\x19\n\x11issuer_public_key\x18\x03 \x01(\t\x12\x11\n\trecord_id\x18\x04 \x01(\t\x12\x13\n\x0brecord_data\x18\x06 \x01(\t\x12\x13\n\x0brecord_hash\x18\x07 \x01(\t\"\x97\x01\n\x12UpdateRecordAction\x12\x18\n\x10owner_public_key\x18\x01 \x01(\t\x12\x1a\n\x12manager_public_key\x18\x02 \x01(\t\x12\x11\n\trecord_id\x18\x03 \x01(\t\x12\x13\n\x0brecord_data\x18\x04 \x01(\t\x12\x13\n\x0brecord_hash\x18\x05 \x01(\t\x12\x0e\n\x06\x61\x63tive\x18\x06 \x01(\x08\",\n\x15UpdateActorInfoAction\x12\x13\n\x04info\x18\x03 \x01(\x0b\x32\x05.Info\",\n\x17SetB4EEnvironmentAction\x12\x11\n\ttimestamp\x18\x01 \x01(\x04**\n\nRecordType\x12\x0b\n\x07SUBJECT\x10\x00\x12\x0f\n\x0b\x43\x45RTIFICATE\x10\x01\x62\x06proto3')
+  serialized_pb=_b('\n\rpayload.proto\"\xb7\n\n\nB4EPayload\x12\"\n\x06\x61\x63tion\x18\x01 \x01(\x0e\x32\x12.B4EPayload.Action\x12(\n\x0c\x63reate_actor\x18\x02 \x01(\x0b\x32\x12.CreateActorAction\x12.\n\x12\x63reate_institution\x18\x03 \x01(\x0b\x32\x12.CreateActorAction\x12,\n\x0e\x63reate_teacher\x18\x04 \x01(\x0b\x32\x14.CreateTeacherAction\x12\x32\n\x12\x63reate_edu_program\x18\x05 \x01(\x0b\x32\x16.CreatePortfolioAction\x12(\n\x0c\x63reate_class\x18\x06 \x01(\x0b\x32\x12.CreateClassAction\x12*\n\rcreate_voting\x18\x07 \x01(\x0b\x32\x13.CreateVotingAction\x12\x19\n\x04vote\x18\x08 \x01(\x0b\x32\x0b.VoteAction\x12*\n\rcreate_record\x18\t \x01(\x0b\x32\x13.CreateRecordAction\x12(\n\x0b\x63reate_cert\x18\n \x01(\x0b\x32\x13.CreateRecordAction\x12+\n\x0e\x63reate_subject\x18\x0b \x01(\x0b\x32\x13.CreateRecordAction\x12*\n\rupdate_record\x18\x0c \x01(\x0b\x32\x13.UpdateRecordAction\x12+\n\x0emodify_subject\x18\r \x01(\x0b\x32\x13.ModifyRecordAction\x12(\n\x0bmodify_cert\x18\x0e \x01(\x0b\x32\x13.ModifyRecordAction\x12,\n\x0brevoke_cert\x18\x0f \x01(\x0b\x32\x17.ChangeStatusCertAction\x12.\n\rreactive_cert\x18\x10 \x01(\x0b\x32\x17.ChangeStatusCertAction\x12\x37\n\x14update_actor_profile\x18\x11 \x01(\x0b\x32\x19.UpdateActorProfileAction\x12\x34\n\x12reject_institution\x18\x12 \x01(\x0b\x32\x18.RejectInstitutionAction\x12\x34\n\x12\x61\x63tive_institution\x18\x13 \x01(\x0b\x32\x18.ActiveInstitutionAction\x12\x35\n\x13set_b4e_environment\x18\x14 \x01(\x0b\x32\x18.SetB4EEnvironmentAction\x12\x11\n\ttimestamp\x18\x15 \x01(\x04\"\x84\x03\n\x06\x41\x63tion\x12\x10\n\x0c\x43REATE_ACTOR\x10\x00\x12\x16\n\x12\x43REATE_INSTITUTION\x10\x01\x12\x12\n\x0e\x43REATE_TEACHER\x10\x02\x12\x16\n\x12\x43REATE_EDU_PROGRAM\x10\x03\x12\x10\n\x0c\x43REATE_CLASS\x10\x04\x12\x11\n\rCREATE_VOTING\x10\x05\x12\x08\n\x04VOTE\x10\x06\x12\x11\n\rCREATE_RECORD\x10\x07\x12\x0f\n\x0b\x43REATE_CERT\x10\x08\x12\x12\n\x0e\x43REATE_SUBJECT\x10\t\x12\x11\n\rUPDATE_RECORD\x10\n\x12\x12\n\x0eMODIFY_SUBJECT\x10\x0b\x12\x0f\n\x0bMODIFY_CERT\x10\x0c\x12\x0f\n\x0bREVOKE_CERT\x10\r\x12\x11\n\rREACTIVE_CERT\x10\x0e\x12\x18\n\x14UPDATE_ACTOR_PROFILE\x10\x0f\x12\x16\n\x12REJECT_INSTITUTION\x10\x10\x12\x16\n\x12\x41\x43TIVE_INSTITUTION\x10\x11\x12\x17\n\x13SET_B4E_ENVIRONMENT\x10\x12\"-\n\x11\x43reateActorAction\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\t\"K\n\x13\x43reateTeacherAction\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1a\n\x12teacher_public_key\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\"s\n\x15\x43reatePortfolioAction\x12\n\n\x02id\x18\x01 \x01(\t\x12\x18\n\x10owner_public_key\x18\x02 \x01(\t\x12&\n\x0eportfolio_type\x18\x03 \x01(\x0e\x32\x0e.PortfolioType\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\t\"\x82\x01\n\x11\x43reateClassAction\x12\x10\n\x08\x63lass_id\x18\x01 \x01(\t\x12\x12\n\nsubject_id\x18\x02 \x01(\t\x12\x0e\n\x06\x63redit\x18\x03 \x01(\x05\x12\x1a\n\x12teacher_public_key\x18\x04 \x01(\t\x12\x1b\n\x13student_public_keys\x18\x05 \x03(\t\"N\n\x12\x43reateVotingAction\x12\x1a\n\x12\x65lector_public_key\x18\x01 \x01(\t\x12\x1c\n\tvote_type\x18\x02 \x01(\x0e\x32\t.VoteType\"8\n\nVoteAction\x12\x1a\n\x12\x65lector_public_key\x18\x01 \x01(\t\x12\x0e\n\x06\x61\x63\x63\x65pt\x18\x02 \x01(\x08\"\xb3\x01\n\x12\x43reateRecordAction\x12\x18\n\x10owner_public_key\x18\x01 \x01(\t\x12\x1a\n\x12manager_public_key\x18\x02 \x01(\t\x12\x11\n\trecord_id\x18\x03 \x01(\t\x12 \n\x0brecord_type\x18\x04 \x01(\x0e\x32\x0b.RecordType\x12\x14\n\x0cportfolio_id\x18\x05 \x01(\t\x12\x0e\n\x06\x63ipher\x18\x06 \x01(\t\x12\x0c\n\x04hash\x18\x07 \x01(\t\"\x85\x01\n\x12UpdateRecordAction\x12\x18\n\x10owner_public_key\x18\x01 \x01(\t\x12\x11\n\trecord_id\x18\x03 \x01(\t\x12\x0e\n\x06\x63ipher\x18\x04 \x01(\t\x12\x0c\n\x04hash\x18\x05 \x01(\t\x12$\n\rrecord_status\x18\x06 \x01(\x0e\x32\r.RecordStatus\"{\n\x12ModifyRecordAction\x12\x18\n\x10owner_public_key\x18\x01 \x01(\t\x12\x1a\n\x12manager_public_key\x18\x02 \x01(\t\x12\x11\n\trecord_id\x18\x03 \x01(\t\x12\x0e\n\x06\x63ipher\x18\x04 \x01(\t\x12\x0c\n\x04hash\x18\x05 \x01(\t\"E\n\x16\x43hangeStatusCertAction\x12\x18\n\x10owner_public_key\x18\x01 \x01(\t\x12\x11\n\trecord_id\x18\x02 \x01(\t\"(\n\x18UpdateActorProfileAction\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"9\n\x17RejectInstitutionAction\x12\x1e\n\x16institution_public_key\x18\x01 \x01(\t\"9\n\x17\x41\x63tiveInstitutionAction\x12\x1e\n\x16institution_public_key\x18\x01 \x01(\t\",\n\x17SetB4EEnvironmentAction\x12\x11\n\ttimestamp\x18\x01 \x01(\x04* \n\rPortfolioType\x12\x0f\n\x0b\x45\x44U_PROGRAM\x10\x00*\"\n\x08VoteType\x12\n\n\x06\x41\x43TIVE\x10\x00\x12\n\n\x06REJECT\x10\x01*5\n\nRecordType\x12\x0b\n\x07SUBJECT\x10\x00\x12\x0f\n\x0b\x43\x45RTIFICATE\x10\x01\x12\t\n\x05OTHER\x10\x02*9\n\x0cRecordStatus\x12\x0b\n\x07\x43REATED\x10\x00\x12\x0b\n\x07REVOKED\x10\x01\x12\x0f\n\x0bREACTIVATED\x10\x02\x62\x06proto3')
 )
 
+_PORTFOLIOTYPE = _descriptor.EnumDescriptor(
+  name='PortfolioType',
+  full_name='PortfolioType',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='EDU_PROGRAM', index=0, number=0,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2587,
+  serialized_end=2619,
+)
+_sym_db.RegisterEnumDescriptor(_PORTFOLIOTYPE)
+
+PortfolioType = enum_type_wrapper.EnumTypeWrapper(_PORTFOLIOTYPE)
+_VOTETYPE = _descriptor.EnumDescriptor(
+  name='VoteType',
+  full_name='VoteType',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='ACTIVE', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='REJECT', index=1, number=1,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2621,
+  serialized_end=2655,
+)
+_sym_db.RegisterEnumDescriptor(_VOTETYPE)
+
+VoteType = enum_type_wrapper.EnumTypeWrapper(_VOTETYPE)
 _RECORDTYPE = _descriptor.EnumDescriptor(
   name='RecordType',
   full_name='RecordType',
@@ -37,17 +79,55 @@ _RECORDTYPE = _descriptor.EnumDescriptor(
       name='CERTIFICATE', index=1, number=1,
       serialized_options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='OTHER', index=2, number=2,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2081,
-  serialized_end=2123,
+  serialized_start=2657,
+  serialized_end=2710,
 )
 _sym_db.RegisterEnumDescriptor(_RECORDTYPE)
 
 RecordType = enum_type_wrapper.EnumTypeWrapper(_RECORDTYPE)
+_RECORDSTATUS = _descriptor.EnumDescriptor(
+  name='RecordStatus',
+  full_name='RecordStatus',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='CREATED', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='REVOKED', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='REACTIVATED', index=2, number=2,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2712,
+  serialized_end=2769,
+)
+_sym_db.RegisterEnumDescriptor(_RECORDSTATUS)
+
+RecordStatus = enum_type_wrapper.EnumTypeWrapper(_RECORDSTATUS)
+EDU_PROGRAM = 0
+ACTIVE = 0
+REJECT = 1
 SUBJECT = 0
 CERTIFICATE = 1
+OTHER = 2
+CREATED = 0
+REVOKED = 1
+REACTIVATED = 2
 
 
 _B4EPAYLOAD_ACTION = _descriptor.EnumDescriptor(
@@ -57,19 +137,19 @@ _B4EPAYLOAD_ACTION = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='CREATE_INSTITUTION', index=0, number=0,
+      name='CREATE_ACTOR', index=0, number=0,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CREATE_TEACHER', index=1, number=1,
+      name='CREATE_INSTITUTION', index=1, number=1,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CREATE_EDU_OFFICER', index=2, number=2,
+      name='CREATE_TEACHER', index=2, number=2,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CREATE_VOTE', index=3, number=3,
+      name='CREATE_EDU_PROGRAM', index=3, number=3,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
@@ -77,34 +157,66 @@ _B4EPAYLOAD_ACTION = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CREATE_RECORD', index=5, number=6,
+      name='CREATE_VOTING', index=5, number=5,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CREATE_CERT', index=6, number=7,
+      name='VOTE', index=6, number=6,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='CREATE_SUBJECT', index=7, number=8,
+      name='CREATE_RECORD', index=7, number=7,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='UPDATE_RECORD', index=8, number=9,
+      name='CREATE_CERT', index=8, number=8,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='UPDATE_ACTOR_INFO', index=9, number=10,
+      name='CREATE_SUBJECT', index=9, number=9,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='SET_B4E_ENVIRONMENT', index=10, number=11,
+      name='UPDATE_RECORD', index=10, number=10,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='MODIFY_SUBJECT', index=11, number=11,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='MODIFY_CERT', index=12, number=12,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='REVOKE_CERT', index=13, number=13,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='REACTIVE_CERT', index=14, number=14,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='UPDATE_ACTOR_PROFILE', index=15, number=15,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='REJECT_INSTITUTION', index=16, number=16,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ACTIVE_INSTITUTION', index=17, number=17,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SET_B4E_ENVIRONMENT', index=18, number=18,
       serialized_options=None,
       type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=603,
-  serialized_end=837,
+  serialized_start=965,
+  serialized_end=1353,
 )
 _sym_db.RegisterEnumDescriptor(_B4EPAYLOAD_ACTION)
 
@@ -124,28 +236,28 @@ _B4EPAYLOAD = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='create_institution', full_name='B4EPayload.create_institution', index=1,
+      name='create_actor', full_name='B4EPayload.create_actor', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='create_teacher', full_name='B4EPayload.create_teacher', index=2,
+      name='create_institution', full_name='B4EPayload.create_institution', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='create_edu_officer', full_name='B4EPayload.create_edu_officer', index=3,
+      name='create_teacher', full_name='B4EPayload.create_teacher', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='create_vote', full_name='B4EPayload.create_vote', index=4,
+      name='create_edu_program', full_name='B4EPayload.create_edu_program', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -159,50 +271,106 @@ _B4EPAYLOAD = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='create_record', full_name='B4EPayload.create_record', index=6,
+      name='create_voting', full_name='B4EPayload.create_voting', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='create_cert', full_name='B4EPayload.create_cert', index=7,
+      name='vote', full_name='B4EPayload.vote', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='create_subject', full_name='B4EPayload.create_subject', index=8,
+      name='create_record', full_name='B4EPayload.create_record', index=8,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='update_record', full_name='B4EPayload.update_record', index=9,
+      name='create_cert', full_name='B4EPayload.create_cert', index=9,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='update_actor_info', full_name='B4EPayload.update_actor_info', index=10,
+      name='create_subject', full_name='B4EPayload.create_subject', index=10,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='set_b4e_environment', full_name='B4EPayload.set_b4e_environment', index=11,
+      name='update_record', full_name='B4EPayload.update_record', index=11,
       number=12, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='timestamp', full_name='B4EPayload.timestamp', index=12,
-      number=13, type=4, cpp_type=4, label=1,
+      name='modify_subject', full_name='B4EPayload.modify_subject', index=12,
+      number=13, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='modify_cert', full_name='B4EPayload.modify_cert', index=13,
+      number=14, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='revoke_cert', full_name='B4EPayload.revoke_cert', index=14,
+      number=15, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='reactive_cert', full_name='B4EPayload.reactive_cert', index=15,
+      number=16, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='update_actor_profile', full_name='B4EPayload.update_actor_profile', index=16,
+      number=17, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='reject_institution', full_name='B4EPayload.reject_institution', index=17,
+      number=18, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='active_institution', full_name='B4EPayload.active_institution', index=18,
+      number=19, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='set_b4e_environment', full_name='B4EPayload.set_b4e_environment', index=19,
+      number=20, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='timestamp', full_name='B4EPayload.timestamp', index=20,
+      number=21, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -221,20 +389,27 @@ _B4EPAYLOAD = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=18,
-  serialized_end=837,
+  serialized_end=1353,
 )
 
 
-_INFO = _descriptor.Descriptor(
-  name='Info',
-  full_name='Info',
+_CREATEACTORACTION = _descriptor.Descriptor(
+  name='CreateActorAction',
+  full_name='CreateActorAction',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='data', full_name='Info.data', index=0,
+      name='id', full_name='CreateActorAction.id', index=0,
       number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='CreateActorAction.data', index=1,
+      number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -251,46 +426,8 @@ _INFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=839,
-  serialized_end=859,
-)
-
-
-_CREATEINSTITUTIONACTION = _descriptor.Descriptor(
-  name='CreateInstitutionAction',
-  full_name='CreateInstitutionAction',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='id', full_name='CreateInstitutionAction.id', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='info', full_name='CreateInstitutionAction.info', index=1,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=861,
-  serialized_end=919,
+  serialized_start=1355,
+  serialized_end=1400,
 )
 
 
@@ -316,9 +453,9 @@ _CREATETEACHERACTION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='info', full_name='CreateTeacherAction.info', index=2,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='data', full_name='CreateTeacherAction.data', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -334,36 +471,43 @@ _CREATETEACHERACTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=921,
-  serialized_end=1003,
+  serialized_start=1402,
+  serialized_end=1477,
 )
 
 
-_CREATEEDUOFFICERACTION = _descriptor.Descriptor(
-  name='CreateEduOfficerAction',
-  full_name='CreateEduOfficerAction',
+_CREATEPORTFOLIOACTION = _descriptor.Descriptor(
+  name='CreatePortfolioAction',
+  full_name='CreatePortfolioAction',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='CreateEduOfficerAction.id', index=0,
+      name='id', full_name='CreatePortfolioAction.id', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='edu_officer_public_key', full_name='CreateEduOfficerAction.edu_officer_public_key', index=1,
+      name='owner_public_key', full_name='CreatePortfolioAction.owner_public_key', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='info', full_name='CreateEduOfficerAction.info', index=2,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='portfolio_type', full_name='CreatePortfolioAction.portfolio_type', index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='CreatePortfolioAction.data', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -379,53 +523,8 @@ _CREATEEDUOFFICERACTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1005,
-  serialized_end=1094,
-)
-
-
-_CREATEVOTEACTION = _descriptor.Descriptor(
-  name='CreateVoteAction',
-  full_name='CreateVoteAction',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='issuer_public_key', full_name='CreateVoteAction.issuer_public_key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='elector_public_key', full_name='CreateVoteAction.elector_public_key', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='accepted', full_name='CreateVoteAction.accepted', index=2,
-      number=3, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1096,
-  serialized_end=1187,
+  serialized_start=1479,
+  serialized_end=1594,
 )
 
 
@@ -444,22 +543,67 @@ _CREATECLASSACTION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='teacher_public_key', full_name='CreateClassAction.teacher_public_key', index=1,
+      name='subject_id', full_name='CreateClassAction.subject_id', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='edu_officer_public_key', full_name='CreateClassAction.edu_officer_public_key', index=2,
-      number=3, type=9, cpp_type=9, label=1,
+      name='credit', full_name='CreateClassAction.credit', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='teacher_public_key', full_name='CreateClassAction.teacher_public_key', index=3,
+      number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='timestamp', full_name='CreateClassAction.timestamp', index=3,
-      number=4, type=4, cpp_type=4, label=1,
+      name='student_public_keys', full_name='CreateClassAction.student_public_keys', index=4,
+      number=5, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1597,
+  serialized_end=1727,
+)
+
+
+_CREATEVOTINGACTION = _descriptor.Descriptor(
+  name='CreateVotingAction',
+  full_name='CreateVotingAction',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='elector_public_key', full_name='CreateVotingAction.elector_public_key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='vote_type', full_name='CreateVotingAction.vote_type', index=1,
+      number=2, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -476,8 +620,46 @@ _CREATECLASSACTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1189,
-  serialized_end=1305,
+  serialized_start=1729,
+  serialized_end=1807,
+)
+
+
+_VOTEACTION = _descriptor.Descriptor(
+  name='VoteAction',
+  full_name='VoteAction',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='elector_public_key', full_name='VoteAction.elector_public_key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='accept', full_name='VoteAction.accept', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1809,
+  serialized_end=1865,
 )
 
 
@@ -503,35 +685,35 @@ _CREATERECORDACTION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='issuer_public_key', full_name='CreateRecordAction.issuer_public_key', index=2,
+      name='record_id', full_name='CreateRecordAction.record_id', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='record_id', full_name='CreateRecordAction.record_id', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='record_type', full_name='CreateRecordAction.record_type', index=4,
-      number=5, type=14, cpp_type=8, label=1,
+      name='record_type', full_name='CreateRecordAction.record_type', index=3,
+      number=4, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='record_data', full_name='CreateRecordAction.record_data', index=5,
+      name='portfolio_id', full_name='CreateRecordAction.portfolio_id', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='cipher', full_name='CreateRecordAction.cipher', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='record_hash', full_name='CreateRecordAction.record_hash', index=6,
+      name='hash', full_name='CreateRecordAction.hash', index=6,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -549,140 +731,8 @@ _CREATERECORDACTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1308,
-  serialized_end=1504,
-)
-
-
-_CREATECERTACTION = _descriptor.Descriptor(
-  name='CreateCertAction',
-  full_name='CreateCertAction',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='owner_public_key', full_name='CreateCertAction.owner_public_key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='manager_public_key', full_name='CreateCertAction.manager_public_key', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='issuer_public_key', full_name='CreateCertAction.issuer_public_key', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='record_id', full_name='CreateCertAction.record_id', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='record_data', full_name='CreateCertAction.record_data', index=4,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='record_hash', full_name='CreateCertAction.record_hash', index=5,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1507,
-  serialized_end=1667,
-)
-
-
-_CREATESUBJECTACTION = _descriptor.Descriptor(
-  name='CreateSubjectAction',
-  full_name='CreateSubjectAction',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='owner_public_key', full_name='CreateSubjectAction.owner_public_key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='manager_public_key', full_name='CreateSubjectAction.manager_public_key', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='issuer_public_key', full_name='CreateSubjectAction.issuer_public_key', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='record_id', full_name='CreateSubjectAction.record_id', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='record_data', full_name='CreateSubjectAction.record_data', index=4,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='record_hash', full_name='CreateSubjectAction.record_hash', index=5,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1670,
-  serialized_end=1833,
+  serialized_start=1868,
+  serialized_end=2047,
 )
 
 
@@ -701,37 +751,30 @@ _UPDATERECORDACTION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='manager_public_key', full_name='UpdateRecordAction.manager_public_key', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='record_id', full_name='UpdateRecordAction.record_id', index=2,
+      name='record_id', full_name='UpdateRecordAction.record_id', index=1,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='record_data', full_name='UpdateRecordAction.record_data', index=3,
+      name='cipher', full_name='UpdateRecordAction.cipher', index=2,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='record_hash', full_name='UpdateRecordAction.record_hash', index=4,
+      name='hash', full_name='UpdateRecordAction.hash', index=3,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='active', full_name='UpdateRecordAction.active', index=5,
-      number=6, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      name='record_status', full_name='UpdateRecordAction.record_status', index=4,
+      number=6, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -747,22 +790,50 @@ _UPDATERECORDACTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1836,
-  serialized_end=1987,
+  serialized_start=2050,
+  serialized_end=2183,
 )
 
 
-_UPDATEACTORINFOACTION = _descriptor.Descriptor(
-  name='UpdateActorInfoAction',
-  full_name='UpdateActorInfoAction',
+_MODIFYRECORDACTION = _descriptor.Descriptor(
+  name='ModifyRecordAction',
+  full_name='ModifyRecordAction',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='info', full_name='UpdateActorInfoAction.info', index=0,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='owner_public_key', full_name='ModifyRecordAction.owner_public_key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='manager_public_key', full_name='ModifyRecordAction.manager_public_key', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='record_id', full_name='ModifyRecordAction.record_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='cipher', full_name='ModifyRecordAction.cipher', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='hash', full_name='ModifyRecordAction.hash', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -778,8 +849,139 @@ _UPDATEACTORINFOACTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1989,
-  serialized_end=2033,
+  serialized_start=2185,
+  serialized_end=2308,
+)
+
+
+_CHANGESTATUSCERTACTION = _descriptor.Descriptor(
+  name='ChangeStatusCertAction',
+  full_name='ChangeStatusCertAction',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='owner_public_key', full_name='ChangeStatusCertAction.owner_public_key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='record_id', full_name='ChangeStatusCertAction.record_id', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2310,
+  serialized_end=2379,
+)
+
+
+_UPDATEACTORPROFILEACTION = _descriptor.Descriptor(
+  name='UpdateActorProfileAction',
+  full_name='UpdateActorProfileAction',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='data', full_name='UpdateActorProfileAction.data', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2381,
+  serialized_end=2421,
+)
+
+
+_REJECTINSTITUTIONACTION = _descriptor.Descriptor(
+  name='RejectInstitutionAction',
+  full_name='RejectInstitutionAction',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='institution_public_key', full_name='RejectInstitutionAction.institution_public_key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2423,
+  serialized_end=2480,
+)
+
+
+_ACTIVEINSTITUTIONACTION = _descriptor.Descriptor(
+  name='ActiveInstitutionAction',
+  full_name='ActiveInstitutionAction',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='institution_public_key', full_name='ActiveInstitutionAction.institution_public_key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2482,
+  serialized_end=2539,
 )
 
 
@@ -809,42 +1011,54 @@ _SETB4EENVIRONMENTACTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2035,
-  serialized_end=2079,
+  serialized_start=2541,
+  serialized_end=2585,
 )
 
 _B4EPAYLOAD.fields_by_name['action'].enum_type = _B4EPAYLOAD_ACTION
-_B4EPAYLOAD.fields_by_name['create_institution'].message_type = _CREATEINSTITUTIONACTION
+_B4EPAYLOAD.fields_by_name['create_actor'].message_type = _CREATEACTORACTION
+_B4EPAYLOAD.fields_by_name['create_institution'].message_type = _CREATEACTORACTION
 _B4EPAYLOAD.fields_by_name['create_teacher'].message_type = _CREATETEACHERACTION
-_B4EPAYLOAD.fields_by_name['create_edu_officer'].message_type = _CREATEEDUOFFICERACTION
-_B4EPAYLOAD.fields_by_name['create_vote'].message_type = _CREATEVOTEACTION
+_B4EPAYLOAD.fields_by_name['create_edu_program'].message_type = _CREATEPORTFOLIOACTION
 _B4EPAYLOAD.fields_by_name['create_class'].message_type = _CREATECLASSACTION
+_B4EPAYLOAD.fields_by_name['create_voting'].message_type = _CREATEVOTINGACTION
+_B4EPAYLOAD.fields_by_name['vote'].message_type = _VOTEACTION
 _B4EPAYLOAD.fields_by_name['create_record'].message_type = _CREATERECORDACTION
-_B4EPAYLOAD.fields_by_name['create_cert'].message_type = _CREATECERTACTION
-_B4EPAYLOAD.fields_by_name['create_subject'].message_type = _CREATESUBJECTACTION
+_B4EPAYLOAD.fields_by_name['create_cert'].message_type = _CREATERECORDACTION
+_B4EPAYLOAD.fields_by_name['create_subject'].message_type = _CREATERECORDACTION
 _B4EPAYLOAD.fields_by_name['update_record'].message_type = _UPDATERECORDACTION
-_B4EPAYLOAD.fields_by_name['update_actor_info'].message_type = _UPDATEACTORINFOACTION
+_B4EPAYLOAD.fields_by_name['modify_subject'].message_type = _MODIFYRECORDACTION
+_B4EPAYLOAD.fields_by_name['modify_cert'].message_type = _MODIFYRECORDACTION
+_B4EPAYLOAD.fields_by_name['revoke_cert'].message_type = _CHANGESTATUSCERTACTION
+_B4EPAYLOAD.fields_by_name['reactive_cert'].message_type = _CHANGESTATUSCERTACTION
+_B4EPAYLOAD.fields_by_name['update_actor_profile'].message_type = _UPDATEACTORPROFILEACTION
+_B4EPAYLOAD.fields_by_name['reject_institution'].message_type = _REJECTINSTITUTIONACTION
+_B4EPAYLOAD.fields_by_name['active_institution'].message_type = _ACTIVEINSTITUTIONACTION
 _B4EPAYLOAD.fields_by_name['set_b4e_environment'].message_type = _SETB4EENVIRONMENTACTION
 _B4EPAYLOAD_ACTION.containing_type = _B4EPAYLOAD
-_CREATEINSTITUTIONACTION.fields_by_name['info'].message_type = _INFO
-_CREATETEACHERACTION.fields_by_name['info'].message_type = _INFO
-_CREATEEDUOFFICERACTION.fields_by_name['info'].message_type = _INFO
+_CREATEPORTFOLIOACTION.fields_by_name['portfolio_type'].enum_type = _PORTFOLIOTYPE
+_CREATEVOTINGACTION.fields_by_name['vote_type'].enum_type = _VOTETYPE
 _CREATERECORDACTION.fields_by_name['record_type'].enum_type = _RECORDTYPE
-_UPDATEACTORINFOACTION.fields_by_name['info'].message_type = _INFO
+_UPDATERECORDACTION.fields_by_name['record_status'].enum_type = _RECORDSTATUS
 DESCRIPTOR.message_types_by_name['B4EPayload'] = _B4EPAYLOAD
-DESCRIPTOR.message_types_by_name['Info'] = _INFO
-DESCRIPTOR.message_types_by_name['CreateInstitutionAction'] = _CREATEINSTITUTIONACTION
+DESCRIPTOR.message_types_by_name['CreateActorAction'] = _CREATEACTORACTION
 DESCRIPTOR.message_types_by_name['CreateTeacherAction'] = _CREATETEACHERACTION
-DESCRIPTOR.message_types_by_name['CreateEduOfficerAction'] = _CREATEEDUOFFICERACTION
-DESCRIPTOR.message_types_by_name['CreateVoteAction'] = _CREATEVOTEACTION
+DESCRIPTOR.message_types_by_name['CreatePortfolioAction'] = _CREATEPORTFOLIOACTION
 DESCRIPTOR.message_types_by_name['CreateClassAction'] = _CREATECLASSACTION
+DESCRIPTOR.message_types_by_name['CreateVotingAction'] = _CREATEVOTINGACTION
+DESCRIPTOR.message_types_by_name['VoteAction'] = _VOTEACTION
 DESCRIPTOR.message_types_by_name['CreateRecordAction'] = _CREATERECORDACTION
-DESCRIPTOR.message_types_by_name['CreateCertAction'] = _CREATECERTACTION
-DESCRIPTOR.message_types_by_name['CreateSubjectAction'] = _CREATESUBJECTACTION
 DESCRIPTOR.message_types_by_name['UpdateRecordAction'] = _UPDATERECORDACTION
-DESCRIPTOR.message_types_by_name['UpdateActorInfoAction'] = _UPDATEACTORINFOACTION
+DESCRIPTOR.message_types_by_name['ModifyRecordAction'] = _MODIFYRECORDACTION
+DESCRIPTOR.message_types_by_name['ChangeStatusCertAction'] = _CHANGESTATUSCERTACTION
+DESCRIPTOR.message_types_by_name['UpdateActorProfileAction'] = _UPDATEACTORPROFILEACTION
+DESCRIPTOR.message_types_by_name['RejectInstitutionAction'] = _REJECTINSTITUTIONACTION
+DESCRIPTOR.message_types_by_name['ActiveInstitutionAction'] = _ACTIVEINSTITUTIONACTION
 DESCRIPTOR.message_types_by_name['SetB4EEnvironmentAction'] = _SETB4EENVIRONMENTACTION
+DESCRIPTOR.enum_types_by_name['PortfolioType'] = _PORTFOLIOTYPE
+DESCRIPTOR.enum_types_by_name['VoteType'] = _VOTETYPE
 DESCRIPTOR.enum_types_by_name['RecordType'] = _RECORDTYPE
+DESCRIPTOR.enum_types_by_name['RecordStatus'] = _RECORDSTATUS
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 B4EPayload = _reflection.GeneratedProtocolMessageType('B4EPayload', (_message.Message,), dict(
@@ -854,19 +1068,12 @@ B4EPayload = _reflection.GeneratedProtocolMessageType('B4EPayload', (_message.Me
   ))
 _sym_db.RegisterMessage(B4EPayload)
 
-Info = _reflection.GeneratedProtocolMessageType('Info', (_message.Message,), dict(
-  DESCRIPTOR = _INFO,
+CreateActorAction = _reflection.GeneratedProtocolMessageType('CreateActorAction', (_message.Message,), dict(
+  DESCRIPTOR = _CREATEACTORACTION,
   __module__ = 'payload_pb2'
-  # @@protoc_insertion_point(class_scope:Info)
+  # @@protoc_insertion_point(class_scope:CreateActorAction)
   ))
-_sym_db.RegisterMessage(Info)
-
-CreateInstitutionAction = _reflection.GeneratedProtocolMessageType('CreateInstitutionAction', (_message.Message,), dict(
-  DESCRIPTOR = _CREATEINSTITUTIONACTION,
-  __module__ = 'payload_pb2'
-  # @@protoc_insertion_point(class_scope:CreateInstitutionAction)
-  ))
-_sym_db.RegisterMessage(CreateInstitutionAction)
+_sym_db.RegisterMessage(CreateActorAction)
 
 CreateTeacherAction = _reflection.GeneratedProtocolMessageType('CreateTeacherAction', (_message.Message,), dict(
   DESCRIPTOR = _CREATETEACHERACTION,
@@ -875,19 +1082,12 @@ CreateTeacherAction = _reflection.GeneratedProtocolMessageType('CreateTeacherAct
   ))
 _sym_db.RegisterMessage(CreateTeacherAction)
 
-CreateEduOfficerAction = _reflection.GeneratedProtocolMessageType('CreateEduOfficerAction', (_message.Message,), dict(
-  DESCRIPTOR = _CREATEEDUOFFICERACTION,
+CreatePortfolioAction = _reflection.GeneratedProtocolMessageType('CreatePortfolioAction', (_message.Message,), dict(
+  DESCRIPTOR = _CREATEPORTFOLIOACTION,
   __module__ = 'payload_pb2'
-  # @@protoc_insertion_point(class_scope:CreateEduOfficerAction)
+  # @@protoc_insertion_point(class_scope:CreatePortfolioAction)
   ))
-_sym_db.RegisterMessage(CreateEduOfficerAction)
-
-CreateVoteAction = _reflection.GeneratedProtocolMessageType('CreateVoteAction', (_message.Message,), dict(
-  DESCRIPTOR = _CREATEVOTEACTION,
-  __module__ = 'payload_pb2'
-  # @@protoc_insertion_point(class_scope:CreateVoteAction)
-  ))
-_sym_db.RegisterMessage(CreateVoteAction)
+_sym_db.RegisterMessage(CreatePortfolioAction)
 
 CreateClassAction = _reflection.GeneratedProtocolMessageType('CreateClassAction', (_message.Message,), dict(
   DESCRIPTOR = _CREATECLASSACTION,
@@ -896,26 +1096,26 @@ CreateClassAction = _reflection.GeneratedProtocolMessageType('CreateClassAction'
   ))
 _sym_db.RegisterMessage(CreateClassAction)
 
+CreateVotingAction = _reflection.GeneratedProtocolMessageType('CreateVotingAction', (_message.Message,), dict(
+  DESCRIPTOR = _CREATEVOTINGACTION,
+  __module__ = 'payload_pb2'
+  # @@protoc_insertion_point(class_scope:CreateVotingAction)
+  ))
+_sym_db.RegisterMessage(CreateVotingAction)
+
+VoteAction = _reflection.GeneratedProtocolMessageType('VoteAction', (_message.Message,), dict(
+  DESCRIPTOR = _VOTEACTION,
+  __module__ = 'payload_pb2'
+  # @@protoc_insertion_point(class_scope:VoteAction)
+  ))
+_sym_db.RegisterMessage(VoteAction)
+
 CreateRecordAction = _reflection.GeneratedProtocolMessageType('CreateRecordAction', (_message.Message,), dict(
   DESCRIPTOR = _CREATERECORDACTION,
   __module__ = 'payload_pb2'
   # @@protoc_insertion_point(class_scope:CreateRecordAction)
   ))
 _sym_db.RegisterMessage(CreateRecordAction)
-
-CreateCertAction = _reflection.GeneratedProtocolMessageType('CreateCertAction', (_message.Message,), dict(
-  DESCRIPTOR = _CREATECERTACTION,
-  __module__ = 'payload_pb2'
-  # @@protoc_insertion_point(class_scope:CreateCertAction)
-  ))
-_sym_db.RegisterMessage(CreateCertAction)
-
-CreateSubjectAction = _reflection.GeneratedProtocolMessageType('CreateSubjectAction', (_message.Message,), dict(
-  DESCRIPTOR = _CREATESUBJECTACTION,
-  __module__ = 'payload_pb2'
-  # @@protoc_insertion_point(class_scope:CreateSubjectAction)
-  ))
-_sym_db.RegisterMessage(CreateSubjectAction)
 
 UpdateRecordAction = _reflection.GeneratedProtocolMessageType('UpdateRecordAction', (_message.Message,), dict(
   DESCRIPTOR = _UPDATERECORDACTION,
@@ -924,12 +1124,40 @@ UpdateRecordAction = _reflection.GeneratedProtocolMessageType('UpdateRecordActio
   ))
 _sym_db.RegisterMessage(UpdateRecordAction)
 
-UpdateActorInfoAction = _reflection.GeneratedProtocolMessageType('UpdateActorInfoAction', (_message.Message,), dict(
-  DESCRIPTOR = _UPDATEACTORINFOACTION,
+ModifyRecordAction = _reflection.GeneratedProtocolMessageType('ModifyRecordAction', (_message.Message,), dict(
+  DESCRIPTOR = _MODIFYRECORDACTION,
   __module__ = 'payload_pb2'
-  # @@protoc_insertion_point(class_scope:UpdateActorInfoAction)
+  # @@protoc_insertion_point(class_scope:ModifyRecordAction)
   ))
-_sym_db.RegisterMessage(UpdateActorInfoAction)
+_sym_db.RegisterMessage(ModifyRecordAction)
+
+ChangeStatusCertAction = _reflection.GeneratedProtocolMessageType('ChangeStatusCertAction', (_message.Message,), dict(
+  DESCRIPTOR = _CHANGESTATUSCERTACTION,
+  __module__ = 'payload_pb2'
+  # @@protoc_insertion_point(class_scope:ChangeStatusCertAction)
+  ))
+_sym_db.RegisterMessage(ChangeStatusCertAction)
+
+UpdateActorProfileAction = _reflection.GeneratedProtocolMessageType('UpdateActorProfileAction', (_message.Message,), dict(
+  DESCRIPTOR = _UPDATEACTORPROFILEACTION,
+  __module__ = 'payload_pb2'
+  # @@protoc_insertion_point(class_scope:UpdateActorProfileAction)
+  ))
+_sym_db.RegisterMessage(UpdateActorProfileAction)
+
+RejectInstitutionAction = _reflection.GeneratedProtocolMessageType('RejectInstitutionAction', (_message.Message,), dict(
+  DESCRIPTOR = _REJECTINSTITUTIONACTION,
+  __module__ = 'payload_pb2'
+  # @@protoc_insertion_point(class_scope:RejectInstitutionAction)
+  ))
+_sym_db.RegisterMessage(RejectInstitutionAction)
+
+ActiveInstitutionAction = _reflection.GeneratedProtocolMessageType('ActiveInstitutionAction', (_message.Message,), dict(
+  DESCRIPTOR = _ACTIVEINSTITUTIONACTION,
+  __module__ = 'payload_pb2'
+  # @@protoc_insertion_point(class_scope:ActiveInstitutionAction)
+  ))
+_sym_db.RegisterMessage(ActiveInstitutionAction)
 
 SetB4EEnvironmentAction = _reflection.GeneratedProtocolMessageType('SetB4EEnvironmentAction', (_message.Message,), dict(
   DESCRIPTOR = _SETB4EENVIRONMENTACTION,

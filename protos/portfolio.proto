@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+message Portfolio {
+
+  enum PortfolioType{
+    EDU_PROGRAM = 0;
+  }
+  message PortfolioData {
+    PortfolioType portfolio_type = 1;
+    string data = 2;
+    uint64 timestamp = 3;
+    string transaction_id = 4;
+  }
+
+  string owner_public_key = 1;
+  string manager_public_key = 2;
+  string id = 3;
+  repeated PortfolioData portfolio_data = 4;
+  uint64 timestamp = 5;
+  string transaction_id = 6;
+}
+
+
+message PortfolioContainer {
+  repeated Portfolio entries = 1;
+}

@@ -2,11 +2,13 @@ syntax = "proto3";
 
 message Class {
   string class_id = 1;
-  string teacher_public_key = 2;
-  string edu_officer_public_key = 3;
-  string institution_public_key = 4;
-  uint64 timestamp = 5;
-  string transaction_id = 6;
+  string subject_id = 2;
+  int32 credit = 3;
+  string teacher_public_key = 4;
+  string institution_public_key = 5;
+  repeated string student_public_keys = 6;
+  uint64 timestamp = 7;
+  string transaction_id = 8;
 }
 
 message ClassContainer {

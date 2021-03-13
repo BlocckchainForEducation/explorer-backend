@@ -3,28 +3,30 @@ syntax = "proto3";
 message Actor {
   enum ActorRole{
     INSTITUTION = 0;
-    EDU_OFFICER = 1;
-    TEACHER = 2;
+    TEACHER = 1;
+    OTHER = 2;
   }
-  message Info {
+  enum ActorStatus{
+    WAITING = 0;
+    ACTIVE = 1;
+    REJECT = 2;
+  }
+  message Profile {
     string data = 1;
-    uint64 timestamp = 6;
-    string transaction_id = 7;
+    ActorStatus status = 2;
+    uint64 timestamp = 3;
+    string transaction_id = 4;
   }
+
   string actor_public_key = 1;
   string manager_public_key = 2;
   string id = 3;
   ActorRole role = 4;
-  repeated Info info = 5;
-  ActorStatus status = 6;
+  repeated Profile profile = 5;
   uint64 timestamp = 7;
   string transaction_id = 8;
 }
-enum ActorStatus{
-  WAITING = 0;
-  ACTIVE = 1;
-  REJECT = 2;
-}
+
 
 message ActorContainer {
   repeated Actor entries = 1;

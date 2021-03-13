@@ -6,24 +6,28 @@ message Record {
   enum RecordType {
     CERTIFICATE = 0;
     SUBJECT = 1;
+    OTHER = 2;
+  }
+  enum RecordStatus{
+    CREATED = 0 ;
+    REVOKED = 1;
+    REACTIVATED = 2;
   }
   message RecordData {
-  string record_data = 1;
-  string record_hash =2;
-  bool active = 3;
-  uint64 timestamp = 4;
-  string transaction_id = 5;
-
-}
+    string portfolio_id = 1;
+    string cipher = 2;
+    string hash = 3;
+    RecordStatus record_status = 4;
+    uint64 timestamp = 5;
+    string transaction_id = 6;
+  }
 
   string owner_public_key = 1;
-  string manager_public_key = 2;
-  string issuer_public_key = 3;
+  string issuer_public_key = 2;
+  string manager_public_key = 3;
   string record_id = 4;
   RecordType record_type = 5;
-  repeated RecordData record_data = 6;
-  uint64 timestamp = 7;
-  string transaction_id = 8;
+  repeated RecordData versions = 6;
 }
 
 

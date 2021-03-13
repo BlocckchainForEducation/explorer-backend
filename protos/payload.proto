@@ -4,110 +4,147 @@ syntax = "proto3";
 message B4EPayload{
 
   enum Action {
-    CREATE_INSTITUTION = 0;
-    CREATE_TEACHER = 1;
-    CREATE_EDU_OFFICER = 2;
-    CREATE_VOTE = 3;
+    CREATE_ACTOR = 0;
+    CREATE_INSTITUTION = 1;
+    CREATE_TEACHER = 2;
+    CREATE_EDU_PROGRAM = 3;
     CREATE_CLASS = 4;
-    CREATE_RECORD = 6;
-    CREATE_CERT = 7;
-    CREATE_SUBJECT = 8;
-    UPDATE_RECORD = 9;
-    UPDATE_ACTOR_INFO = 10;
-    SET_B4E_ENVIRONMENT = 11;
+    CREATE_VOTING = 5;
+    VOTE = 6;
+    CREATE_RECORD = 7;
+    CREATE_CERT = 8;
+    CREATE_SUBJECT = 9;
+    UPDATE_RECORD = 10;
+    MODIFY_SUBJECT = 11;
+    MODIFY_CERT = 12;
+    REVOKE_CERT = 13;
+    REACTIVE_CERT = 14;
+    UPDATE_ACTOR_PROFILE = 15;
+    REJECT_INSTITUTION = 16;
+    ACTIVE_INSTITUTION = 17;
+
+    SET_B4E_ENVIRONMENT = 18;
   }
 
   Action action = 1;
 
-  CreateInstitutionAction create_institution = 2;
-  CreateTeacherAction create_teacher = 3;
-  CreateEduOfficerAction create_edu_officer = 4;
-  CreateVoteAction create_vote = 5;
+  CreateActorAction create_actor = 2;
+  CreateActorAction create_institution = 3;
+  CreateTeacherAction create_teacher = 4;
+  CreatePortfolioAction create_edu_program = 5;
   CreateClassAction create_class = 6;
-  CreateRecordAction create_record = 7;
-  CreateCertAction create_cert = 8;
-  CreateSubjectAction create_subject = 9;
-  UpdateRecordAction update_record = 10;
-  UpdateActorInfoAction update_actor_info = 11;
-  SetB4EEnvironmentAction set_b4e_environment = 12;
+  CreateVotingAction create_voting = 7;
+  VoteAction vote = 8;
+  CreateRecordAction create_record = 9;
+  CreateRecordAction create_cert = 10;
+  CreateRecordAction create_subject = 11;
+  UpdateRecordAction update_record = 12;
+  ModifyRecordAction modify_subject = 13;
+  ModifyRecordAction modify_cert = 14;
+  ChangeStatusCertAction revoke_cert = 15;
+  ChangeStatusCertAction reactive_cert = 16;
+  UpdateActorProfileAction update_actor_profile = 17;
+  RejectInstitutionAction reject_institution = 18;
+  ActiveInstitutionAction active_institution = 19;
+  SetB4EEnvironmentAction set_b4e_environment = 20;
 
-  uint64 timestamp = 13;
+  uint64 timestamp = 21;
 }
 
+message CreateActorAction {
+  string id = 1;
+  string data = 2;
+}
+message CreateTeacherAction {
+  string id = 1;
+  string teacher_public_key = 2;
+  string data = 3;
+}
 
-message Info{
-  string data = 1;
+enum PortfolioType{
+  EDU_PROGRAM = 0;
+}
+message CreatePortfolioAction{
+  string id = 1;
+  string owner_public_key = 2;
+  PortfolioType portfolio_type = 3;
+  string data = 4;
+}
+
+message CreateClassAction{
+  string class_id = 1;
+  string subject_id = 2;
+  int32 credit = 3;
+  string teacher_public_key = 4;
+  repeated string student_public_keys = 5;
+}
+
+enum VoteType{
+  ACTIVE = 0;
+  REJECT = 1;
+}
+message CreateVotingAction{
+  string elector_public_key = 1;
+  VoteType vote_type = 2;
+}
+
+message VoteAction {
+  string elector_public_key = 1;
+  bool accept = 2;
 }
 
 enum RecordType{
   SUBJECT = 0;
   CERTIFICATE = 1;
-}
-
-
-message CreateInstitutionAction {
-  string id = 1;
-  Info info = 3;
-}
-
-message CreateTeacherAction {
-  string id = 1;
-  string teacher_public_key = 2;
-  Info info = 4;
-}
-message CreateEduOfficerAction {
-  string id = 1;
-  string edu_officer_public_key = 2;
-  Info info = 4;
-}
-
-message CreateVoteAction {
-  string issuer_public_key = 1;
-  string elector_public_key = 2;
-  bool accepted = 3;
-}
-message CreateClassAction{
-  string class_id = 1;
-  string teacher_public_key = 2;
-  string edu_officer_public_key = 3;
-  uint64 timestamp = 4;
+  OTHER = 2;
 }
 message CreateRecordAction {
   string owner_public_key = 1;
   string manager_public_key = 2;
-  string issuer_public_key = 3;
-  string record_id = 4;
-  RecordType record_type = 5;
-  string record_data = 6;
-  string record_hash = 7;
+  string record_id = 3;
+  RecordType record_type = 4;
+  string portfolio_id = 5;
+  string cipher = 6;
+  string hash = 7;
 }
-message CreateCertAction {
-  string owner_public_key = 1;
-  string manager_public_key = 2;
-  string issuer_public_key = 3;
-  string record_id = 4;
-  string record_data = 6;
-  string record_hash = 7;
+
+enum RecordStatus{
+  CREATED = 0 ;
+  REVOKED = 1;
+  REACTIVATED = 2;
 }
-message CreateSubjectAction {
-  string owner_public_key = 1;
-  string manager_public_key = 2;
-  string issuer_public_key = 3;
-  string record_id = 4;
-  string record_data = 6;
-  string record_hash = 7;
-}
+
 message UpdateRecordAction {
+  string owner_public_key = 1;
+  string record_id = 3;
+  string cipher = 4;
+  string hash = 5;
+  RecordStatus record_status = 6;
+}
+
+message ModifyRecordAction{
   string owner_public_key = 1;
   string manager_public_key = 2;
   string record_id = 3;
-  string record_data = 4;
-  string record_hash = 5;
-  bool active = 6;
+  string cipher = 4;
+  string hash = 5;
+}
+message ChangeStatusCertAction{
+  string owner_public_key = 1;
+  string record_id = 2;
+
 }
 
-message UpdateActorInfoAction {
-  Info info = 3;
+message UpdateActorProfileAction {
+  string data = 1;
+}
+
+message  RejectInstitutionAction{
+  string institution_public_key = 1;
+}
+
+message  ActiveInstitutionAction{
+  string institution_public_key = 1;
 }
 
 message SetB4EEnvironmentAction{
