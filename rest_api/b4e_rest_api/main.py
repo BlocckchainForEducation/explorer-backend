@@ -18,6 +18,7 @@ import asyncio
 import logging
 import sys
 
+import aiohttp_cors as aiohttp_cors
 from zmq.asyncio import ZMQEventLoop
 
 from sawtooth_sdk.processor.log import init_console_logging
@@ -114,6 +115,19 @@ def start_rest_api(host, port, messenger, database):
     app.router.add_get('/peers', handler.fetch_peers)
 
     LOGGER.info('Starting explorer REST API on %s:%s', host, port)
+
+    cors = aiohttp_cors.setup(app, defaults={
+        "*": aiohttp_cors.ResourceOptions(
+            allow_credentials=True,
+            expose_headers="*",
+            allow_headers="*",
+        )
+    })
+
+    # Configure CORS on all routes.
+    for route in list(app.router.routes()):
+        cors.add(route)
+
     web.run_app(
         app,
         host=host,

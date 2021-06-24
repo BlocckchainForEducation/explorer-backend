@@ -6,3 +6,4 @@ pymongo
 eciespy
 matplotlib
 numpy
+aiohttp-cors==0.7.0

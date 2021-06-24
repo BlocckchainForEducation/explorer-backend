@@ -36,7 +36,9 @@ RUN pip3 install \
     requests \
     psycopg2-binary \
     pymongo \
-    nest_asyncio
+    nest_asyncio \
+    aiohttp-cors
+
 
 
 
