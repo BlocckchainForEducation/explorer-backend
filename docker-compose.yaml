@@ -19,41 +19,14 @@ volumes:
   mongodb_data_explorer:
 
 services:
-  b4e-shell-explorer:
-    build:
-      context: .
-      dockerfile: ../shell/Dockerfile
-    image: sawtooth-b4e-shell
-    container_name: b4e-shell-explorer
-    volumes:
-      - .:/project/sawtooth-b4e
-
-    command: |
-      bash -c "
-        b4e-protogen
-        tail -f /dev/null
-      "
 
   # -------------=== shell ===-------------
-
-  shell-explorer:
-    image: hyperledger/sawtooth-shell:chime
-    container_name: sawtooth-shell-default-explorer
-    volumes:
-      - pbft-shared:/pbft-shared
-    command: |
-      bash -c "
-        sawtooth keygen
-        tail -f /dev/null
-      "
-    stop_signal: SIGKILL
-
 
   b4e-rest-api-explorer:
     build:
       context: .
-      dockerfile: ./rest_api/Dockerfile
-    image: sawtooth-b4e-rest-api
+      dockerfile: ./Dockerfile
+    image: b4e-image
     container_name: b4e-rest-api-explorer
     volumes:
       - .:/project/sawtooth-b4e
@@ -61,8 +34,6 @@ services:
       - 8000
     ports:
       - '2398:8000'
-    depends_on:
-      - b4e-shell-explorer
     command: |
       bash -c "
         b4e-rest-api \
@@ -77,13 +48,12 @@ services:
   b4e-subscriber-explorer:
     build:
       context: .
-      dockerfile: subscriber_b4e/Dockerfile
-    image: sawtooth-b4e-subscriber-explorer
+      dockerfile: ./Dockerfile
+    image: b4e-image
     container_name: b4e-subscriber-explorer
     volumes:
       - '.:/project/sawtooth-b4e'
     depends_on:
-      - b4e-shell-explorer
       - mongo-explorer
     command: |
       bash -c "
