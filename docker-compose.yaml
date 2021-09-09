@@ -72,7 +72,7 @@ services:
     expose:
       - 27017
     ports:
-      - '27020:27017'
+      - '28080:27017'
     environment:
       MONGO_INITDB_ROOT_USERNAME: b4e
       MONGO_INITDB_ROOT_PASSWORD: b4e_bkc
