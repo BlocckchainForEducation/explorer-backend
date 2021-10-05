@@ -34,12 +34,14 @@ services:
       - 8000
     ports:
       - '2398:8000'
+    env_file:
+      - .env
     command: |
       bash -c "
         b4e-rest-api \
           -B b4e-rest-api-explorer:8000 \
-          -C 139.59.125.235:4004 \
-          -R 139.59.125.235:8008 \
+          -C ${SAWTOOTH_VALIDATOR_URL} \
+          -R ${SAWTOOTH_REST_URL} \
           --db-host mongo-explorer \
           --db-user b4e \
           --db-password b4e_bkc \
@@ -55,14 +57,16 @@ services:
       - '.:/project/sawtooth-b4e'
     depends_on:
       - mongo-explorer
+    env_file:
+      - .env
     command: |
       bash -c "
         b4e-subscriber subscribe \
         --db-host mongo-explorer \
         --db-user b4e \
         --db-password b4e_bkc \
-        -C tcp://139.59.125.235:4004 \
-        -R http://139.59.125.235:8008 \
+        -C ${SAWTOOTH_VALIDATOR_URL} \
+        -R ${SAWTOOTH_REST_URL} \
         -vv
       "
   mongo-explorer:
